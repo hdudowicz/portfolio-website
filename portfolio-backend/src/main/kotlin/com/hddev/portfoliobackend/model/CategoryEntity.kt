@@ -1,4 +1,4 @@
-package com.hddev.portfoliobackend.features.posts.model
+package com.hddev.portfoliobackend.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -6,9 +6,8 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class AuthorEntity {
+class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
-
 }

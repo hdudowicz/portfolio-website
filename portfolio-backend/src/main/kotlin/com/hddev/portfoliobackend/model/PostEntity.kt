@@ -1,4 +1,4 @@
-package com.hddev.portfoliobackend.features.posts.model
+package com.hddev.portfoliobackend.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -10,17 +10,17 @@ import java.time.LocalDateTime
 
 @Entity(name = "post")
 class PostEntity(
-        @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
-        val title: String = "",
-        val content: String = "",
+    val title: String = "",
+    val content: String = "",
 
-        @ManyToOne var author: AuthorEntity? = null,
-        @ManyToMany var categories: List<CategoryEntity> = listOf(),
+    @ManyToOne var author: String? = null,
+    @ManyToMany var categories: List<CategoryEntity> = listOf(),
 
-        val createdAt: LocalDateTime = LocalDateTime.now(),
-        val updatedAt: LocalDateTime? = null
+    val createdAt: LocalDateTime = LocalDateTime.now(),
+    val updatedAt: LocalDateTime? = null
 ) {
     // Empty constructor for JPA
     constructor() : this(id = null)

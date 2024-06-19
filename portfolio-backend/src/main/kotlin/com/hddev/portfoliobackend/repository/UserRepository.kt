@@ -1,6 +1,6 @@
-package com.hddev.portfoliobackend.features.user.repositories
+package com.hddev.portfoliobackend.repository
 
-import com.hddev.portfoliobackend.features.user.model.UserEntity
+import com.hddev.portfoliobackend.model.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

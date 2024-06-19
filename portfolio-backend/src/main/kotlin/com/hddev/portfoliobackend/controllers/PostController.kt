@@ -1,7 +1,7 @@
-package com.hddev.portfoliobackend.features.posts.controllers
+package com.hddev.portfoliobackend.controllers
 
-import com.hddev.portfoliobackend.features.posts.model.PostEntity
-import com.hddev.portfoliobackend.features.posts.services.PostService
+import com.hddev.portfoliobackend.model.PostEntity
+import com.hddev.portfoliobackend.service.PostService
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.web.bind.annotation.*
 

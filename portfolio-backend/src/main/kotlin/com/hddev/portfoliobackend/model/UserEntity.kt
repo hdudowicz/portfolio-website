@@ -1,4 +1,4 @@
-package com.hddev.portfoliobackend.features.user.model
+package com.hddev.portfoliobackend.model
 
 import jakarta.persistence.*
 
@@ -9,12 +9,10 @@ import jakarta.persistence.*
  * @property id The unique identifier for the user.
  * @property username The username of the user.
  * @property password The password of the user, usually stored as a hash for security.
- * @property roles The roles associated with the user, used for authorization.
  */
 @Entity
 @Table(name = "users")
 data class UserEntity(
-
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         var id: Long? = null,
@@ -25,9 +23,15 @@ data class UserEntity(
         @Column
         var password: String = "",
 
-        @ElementCollection(fetch = FetchType.EAGER)
-        var roles: Set<String> = emptySet()
+        @Column
+        var email: String = "",
 
-        @OneToMany(mappedBy = "author")
-        var posts: List<PostEntity> = mutableListOf()
+        @Column
+        var bio: String? = null,
+
+        @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], orphanRemoval = true)
+        var articles: List<ArticleEntity> = emptyList(),
+
+        @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], orphanRemoval = true)
+        var projects: List<ProjectEntity> = emptyList()
 )

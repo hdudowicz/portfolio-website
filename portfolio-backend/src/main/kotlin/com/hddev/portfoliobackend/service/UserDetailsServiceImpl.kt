@@ -1,6 +1,6 @@
-package com.hddev.portfoliobackend.features.user.services
+package com.hddev.portfoliobackend.service
 
-import com.hddev.portfoliobackend.features.user.repositories.UserRepository
+import com.hddev.portfoliobackend.repository.UserRepository
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException

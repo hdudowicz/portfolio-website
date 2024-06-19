@@ -1,13 +1,14 @@
-package com.hddev.portfoliobackend.features.posts.services
+package com.hddev.portfoliobackend.service
 
-import com.hddev.portfoliobackend.features.user.repositories.UserRepository
-import com.hddev.portfoliobackend.features.posts.model.PostEntity
-import com.hddev.portfoliobackend.features.posts.repositories.PostRepository
+import com.hddev.portfoliobackend.repository.UserRepository
+import com.hddev.portfoliobackend.model.PostEntity
+import com.hddev.portfoliobackend.repository.PostRepository
 import org.springframework.stereotype.Service
 
 @Service
 class PostService(private val postRepository: PostRepository,
-                  private val userRepository: UserRepository) {
+                  private val userRepository: UserRepository
+) {
 
     fun getAllPosts(): List<PostEntity> = postRepository.findAll()
 
@@ -16,7 +17,7 @@ class PostService(private val postRepository: PostRepository,
     fun createPost(post: PostEntity, username: String): PostEntity {
         val user = userRepository.findByUsername(username)
         if (user != null) {
-            post.author = user
+            post.author = user.username
             return postRepository.save(post)
         } else {
             throw Exception("User not found.")
@@ -27,7 +28,7 @@ class PostService(private val postRepository: PostRepository,
         val post = getPostById(id)
         val user = userRepository.findByUsername(username)
         if (post != null) {
-            if (post.author == user) {
+            if (post.author == user?.username) {
                 postRepository.deleteById(id)
             } else {
                 throw Exception("Permission denied.")
