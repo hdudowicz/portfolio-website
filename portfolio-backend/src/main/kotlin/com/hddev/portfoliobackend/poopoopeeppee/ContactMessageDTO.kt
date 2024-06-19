@@ -1,4 +1,4 @@
-package com.hddev.portfoliobackend.model
+package com.hddev.portfoliobackend.poopoopeeppee
 
 import com.hddev.portfoliobackend.entities.ContactMessageEntity
 

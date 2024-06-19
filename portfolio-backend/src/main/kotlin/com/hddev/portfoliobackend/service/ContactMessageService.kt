@@ -1,6 +1,6 @@
 package com.hddev.portfoliobackend.service
 
-import com.hddev.portfoliobackend.model.ContactMessageDTO
+import com.hddev.portfoliobackend.poopoopeeppee.ContactMessageDTO
 import com.hddev.portfoliobackend.repository.ContactMessageRepository
 import org.springframework.stereotype.Service
 
