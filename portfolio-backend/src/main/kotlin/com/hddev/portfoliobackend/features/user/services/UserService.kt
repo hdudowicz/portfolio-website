@@ -1,0 +1,34 @@
+import com.hddev.portfoliobackend.features.posts.model.UserEntity
+import com.hddev.portfoliobackend.features.posts.repositories.UserRepository
+import org.springframework.stereotype.Service
+
+@Service
+class UserService(private val userRepository: UserRepository) {
+
+    fun getAllUsers(): List<UserEntity> = userRepository.findAll()
+
+    fun getUserById(id: Long): UserEntity? = userRepository.findById(id).orElse(null)
+
+    fun createUser(user: UserEntity): UserEntity = userRepository.save(user)
+
+    fun updateUser(id: Long, newUserDetails: UserEntity): UserEntity? {
+        val user = getUserById(id)
+        if (user != null) {
+            user.username = newUserDetails.username
+            user.email = newUserDetails.email
+            user.password = newUserDetails.password
+            return userRepository.save(user)
+        } else {
+            throw Exception("User not found.")
+        }
+    }
+
+    fun deleteUser(id: Long) {
+        val user = getUserById(id)
+        if (user != null) {
+            userRepository.deleteById(id)
+        } else {
+            throw Exception("User not found.")
+        }
+    }
+}

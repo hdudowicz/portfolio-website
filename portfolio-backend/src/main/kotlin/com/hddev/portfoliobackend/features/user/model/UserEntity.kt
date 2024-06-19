@@ -27,4 +27,7 @@ data class UserEntity(
 
         @ElementCollection(fetch = FetchType.EAGER)
         var roles: Set<String> = emptySet()
+
+        @OneToMany(mappedBy = "author")
+        var posts: List<PostEntity> = mutableListOf()
 )
