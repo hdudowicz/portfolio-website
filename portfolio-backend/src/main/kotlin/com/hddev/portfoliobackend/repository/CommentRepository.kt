@@ -1,6 +1,6 @@
 package com.hddev.portfoliobackend.repository
 
-import com.hddev.portfoliobackend.model.CommentEntity
+import com.hddev.portfoliobackend.entities.CommentEntity
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface CommentRepository : JpaRepository<CommentEntity, Long> {

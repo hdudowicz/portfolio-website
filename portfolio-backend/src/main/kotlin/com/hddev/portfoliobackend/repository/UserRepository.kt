@@ -1,6 +1,6 @@
 package com.hddev.portfoliobackend.repository
 
-import com.hddev.portfoliobackend.model.UserEntity
+import com.hddev.portfoliobackend.entities.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
@@ -22,4 +22,7 @@ interface UserRepository : JpaRepository<UserEntity, Long> {
      * @return A nullable User object.
      */
     fun findByUsername(username: String): UserEntity?
+
+    fun findByEmail(email: String): UserEntity?
+
 }

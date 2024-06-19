@@ -1,21 +1,22 @@
-package com.hddev.portfoliobackend.model
+package com.hddev.portfoliobackend.entities
 
 import jakarta.persistence.*
-import java.time.LocalDate
 
 @Entity
-data class ArticleEntity(
+data class ProjectEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     val title: String,
-    @Column(columnDefinition = "TEXT")
-    val content: String,
+    val description: String,
+    @ElementCollection
+    val technologies: List<String>,
+    @ElementCollection
+    val screenshots: List<String>,
+    val liveDemoLink: String?,
+    val sourceCodeLink: String?,
     @ManyToOne
     val author: AuthorEntity,
-    val publicationDate: LocalDate,
-    @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val comments: List<CommentEntity> = emptyList(),
     @ManyToMany
     val relatedArticles: List<ArticleEntity> = emptyList(),
     @ManyToMany

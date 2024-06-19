@@ -1,7 +1,7 @@
 package com.hddev.portfoliobackend.service
 
 import com.hddev.portfoliobackend.repository.UserRepository
-import com.hddev.portfoliobackend.model.PostEntity
+import com.hddev.portfoliobackend.entities.PostEntity
 import com.hddev.portfoliobackend.repository.PostRepository
 import org.springframework.stereotype.Service
 

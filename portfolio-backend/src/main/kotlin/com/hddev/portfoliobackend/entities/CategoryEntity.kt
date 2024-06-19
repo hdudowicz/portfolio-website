@@ -1,4 +1,4 @@
-package com.hddev.portfoliobackend.model
+package com.hddev.portfoliobackend.entities
 
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -6,11 +6,8 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-data class SkillEntity(
+class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
-    val name: String,
-    val proficiencyLevel: String,
-    val description: String?
-)
+    var id: Long? = null
+}
