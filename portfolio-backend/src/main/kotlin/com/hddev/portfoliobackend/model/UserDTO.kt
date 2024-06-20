@@ -1,9 +1,9 @@
-package com.hddev.portfoliobackend.poopoopeeppee
+package com.hddev.portfoliobackend.model
 
 import com.hddev.portfoliobackend.entities.UserEntity
 
 data class UserDTO(
-    val id: Long?,
+    val id: String?,
     val username: String,
     val email: String,
     val password: String,

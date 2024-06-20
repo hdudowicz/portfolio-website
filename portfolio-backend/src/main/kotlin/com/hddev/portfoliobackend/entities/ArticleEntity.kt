@@ -7,12 +7,12 @@ import java.time.LocalDate
 data class ArticleEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val title: String,
     @Column(columnDefinition = "TEXT")
     val content: String,
-    @ManyToOne
-    val author: AuthorEntity,
+
+    val authorId: String,
     val publicationDate: LocalDate,
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comments: List<CommentEntity> = emptyList(),

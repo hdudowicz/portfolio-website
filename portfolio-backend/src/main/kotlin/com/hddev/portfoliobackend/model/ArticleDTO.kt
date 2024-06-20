@@ -1,13 +1,13 @@
-package com.hddev.portfoliobackend.poopoopeeppee
+package com.hddev.portfoliobackend.model
 
 import com.hddev.portfoliobackend.entities.ArticleEntity
 
 data class ArticleDTO(
-    val id: Long?,
+    val id: String?,
     val title: String,
     val content: String,
     val publicationDate: String,
-    val authorId: Long
+    val authorId: String
 )
 
 fun ArticleEntity.toDTO() = ArticleDTO(
@@ -15,5 +15,5 @@ fun ArticleEntity.toDTO() = ArticleDTO(
     title = title,
     content = content,
     publicationDate = publicationDate.toString(),
-    authorId = author.id!!
+    authorId = authorId
 )
