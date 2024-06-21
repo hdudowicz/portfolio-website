@@ -1,27 +1,23 @@
 package com.hddev.portfoliobackend.entities
 
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.ManyToMany
-import jakarta.persistence.ManyToOne
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
-@Entity(name = "post")
-class PostEntity(
+@Entity
+@Table(name = "post")
+data class PostEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String ? = null,
+    val id: String,
+    @Column
     val title: String = "",
+    @Column
     val content: String = "",
-
-    var author: String? = null,
+    @Column(nullable = false)
+    var author: String,
     @ManyToMany var categories: List<CategoryEntity> = listOf(),
-
+    @Column
     val createdAt: LocalDateTime = LocalDateTime.now(),
+    @Column(nullable = true)
     val updatedAt: LocalDateTime? = null
-) {
-    // Empty constructor for JPA
-    constructor() : this(id = null)
-}
+)

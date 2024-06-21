@@ -4,14 +4,17 @@ import jakarta.persistence.*
 import java.time.LocalDate
 
 @Entity
+@Table(name = "article")
 data class ArticleEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: String = "",
     val title: String,
-    @Column(columnDefinition = "TEXT")
+    @Column
     val content: String,
+    @Column
     val authorId: String,
+    @Column
     val publicationDate: LocalDate,
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comments: List<CommentEntity> = emptyList(),

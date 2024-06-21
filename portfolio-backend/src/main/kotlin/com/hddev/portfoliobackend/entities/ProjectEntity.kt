@@ -3,21 +3,25 @@ package com.hddev.portfoliobackend.entities
 import jakarta.persistence.*
 
 @Entity
+@Table(name = "project")
 data class ProjectEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: String = "",
+    @Column
     val title: String,
+    @Column
     val description: String,
-    @ElementCollection
-    val technologies: List<String>,
-    @ElementCollection
-    val screenshots: List<String>,
+    @Column
+    val technologies: String,
+    @OneToMany
+    val screenshots: List<ScreenshotEntity>,
+    @Column
     val liveDemoLink: String?,
+    @Column
     val sourceCodeLink: String?,
+    @Column
     val authorId: String,
     @ManyToMany
     val relatedArticles: List<ArticleEntity> = emptyList(),
-    @ManyToMany
-    val relatedProjects: List<ProjectEntity> = emptyList()
 )

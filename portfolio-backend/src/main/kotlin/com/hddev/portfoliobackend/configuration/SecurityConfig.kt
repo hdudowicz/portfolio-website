@@ -13,7 +13,7 @@ import com.hddev.portfoliobackend.auth.JwtAuthConverter
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfiguration {
-    private val jwtAuthConverter: JwtAuthConverter = JwtAuthConverter()
+    private val jwtAuthConverter: JwtAuthConverter? = JwtAuthConverter()
 
     @Bean
     @Throws(Exception::class)

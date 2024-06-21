@@ -11,7 +11,7 @@ import jakarta.persistence.*
  * @property password The password of the user, usually stored as a hash for security.
  */
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 data class UserEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
