@@ -7,21 +7,27 @@ import jakarta.persistence.*
 data class ProjectEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String = "",
+    val id: Long = 0,
     @Column
     val title: String,
     @Column
     val description: String,
     @Column
     val technologies: String,
-    @OneToMany
-    val screenshots: List<ScreenshotEntity>,
+    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
+    val screenshots: List<ScreenshotEntity> = emptyList(),
     @Column
     val liveDemoLink: String?,
     @Column
     val sourceCodeLink: String?,
-    @Column
-    val authorId: String,
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    val author: AuthorEntity,
     @ManyToMany
-    val relatedArticles: List<ArticleEntity> = emptyList(),
+    @JoinTable(
+        name = "project_article",
+        joinColumns = [JoinColumn(name = "project_id")],
+        inverseJoinColumns = [JoinColumn(name = "article_id")]
+    )
+    val relatedArticles: List<ArticleEntity> = emptyList()
 )

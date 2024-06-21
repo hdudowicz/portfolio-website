@@ -3,13 +3,13 @@ package com.hddev.portfoliobackend.model
 import com.hddev.portfoliobackend.entities.ProjectEntity
 
 data class ProjectDTO(
-    val id: String?,
+    val id: Long?,
     val title: String,
     val description: String,
     val technologies: String,
-    val screenshots: List<String>,
+    val screenshots: List<Long>,
     val sourceCodeLink: String?,
-    val authorId: String
+    val authorId: Long
 )
 
 fun ProjectEntity.toDTO() = ProjectDTO(
@@ -19,5 +19,5 @@ fun ProjectEntity.toDTO() = ProjectDTO(
     technologies = technologies,
     screenshots = screenshots.map { it.id },
     sourceCodeLink = sourceCodeLink,
-    authorId = authorId
+    authorId = author.id
 )

@@ -8,18 +8,18 @@ import java.time.LocalDate
 data class ArticleEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String = "",
+    val id: Long = 0,
+    @Column
     val title: String,
     @Column
     val content: String,
-    @Column
-    val authorId: String,
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    val author: AuthorEntity,
     @Column
     val publicationDate: LocalDate,
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comments: List<CommentEntity> = emptyList(),
-    @ManyToMany
-    val relatedArticles: List<ArticleEntity> = emptyList(),
-    @ManyToMany
+    @ManyToMany(mappedBy = "relatedArticles")
     val relatedProjects: List<ProjectEntity> = emptyList()
 )

@@ -8,14 +8,21 @@ import java.time.LocalDateTime
 data class PostEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String,
+    val id: Long = 0,
     @Column
-    val title: String = "",
+    val title: String,
     @Column
-    val content: String = "",
-    @Column(nullable = false)
-    var author: String,
-    @ManyToMany var categories: List<CategoryEntity> = listOf(),
+    val content: String,
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    var author: AuthorEntity,
+    @ManyToMany
+    @JoinTable(
+        name = "post_category",
+        joinColumns = [JoinColumn(name = "post_id")],
+        inverseJoinColumns = [JoinColumn(name = "category_id")]
+    )
+    val categories: List<CategoryEntity> = emptyList(),
     @Column
     val createdAt: LocalDateTime = LocalDateTime.now(),
     @Column(nullable = true)

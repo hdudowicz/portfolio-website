@@ -4,8 +4,10 @@ import jakarta.persistence.*
 
 @Entity
 @Table(name = "category")
-class CategoryEntity {
+data class CategoryEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: String ? = null
-}
+    val id: Long = 0,
+    @Column
+    val name: String
+)

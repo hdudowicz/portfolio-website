@@ -13,19 +13,15 @@ import jakarta.persistence.*
 @Entity
 @Table(name = "user")
 data class UserEntity(
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        val id: String,
-
-        @Column(unique = true, nullable = false)
-        var username: String,
-
-        @Column(unique = true, nullable = false)
-        var email: String,
-
-        @Column(nullable = false)
-        var password: String,
-
-        @Column(nullable = false)
-        val role: String
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id: Long = 0,
+    @Column(unique = true, nullable = false)
+    var username: String,
+    @Column(unique = true, nullable = false)
+    var email: String,
+    @Column(nullable = false)
+    var password: String,
+    @Column(nullable = false)
+    val role: String
 )

@@ -4,7 +4,7 @@ import com.hddev.portfoliobackend.entities.SkillEntity
 
 // SkillDTO.kt
 data class SkillDTO(
-    val id: String ?,
+    val id: Long?,
     val name: String,
     val proficiencyLevel: Int,
     val description: String?

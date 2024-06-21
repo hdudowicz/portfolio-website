@@ -3,11 +3,12 @@ package com.hddev.portfoliobackend.service
 import com.hddev.portfoliobackend.entities.ArticleEntity
 import com.hddev.portfoliobackend.model.ArticleRequest
 import com.hddev.portfoliobackend.repository.ArticleRepository
+import com.hddev.portfoliobackend.repository.AuthorRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class ArticleService(private val articleRepository: ArticleRepository) {
+class ArticleService(private val articleRepository: ArticleRepository, private val authorRepository: AuthorRepository) {
 
     fun getAllArticles(): List<ArticleEntity> {
         return articleRepository.findAll()
@@ -22,7 +23,7 @@ class ArticleService(private val articleRepository: ArticleRepository) {
             title = articleRequest.title,
             content = articleRequest.content,
             publicationDate = articleRequest.publicationDate.toLocalDate(),
-            authorId = articleRequest.authorId
+            author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
         )
         return articleRepository.save(article)
     }
@@ -33,7 +34,7 @@ class ArticleService(private val articleRepository: ArticleRepository) {
             title = articleRequest.title,
             content = articleRequest.content,
             publicationDate = articleRequest.publicationDate.toLocalDate(),
-            authorId = articleRequest.authorId
+            author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
         )
         return articleRepository.save(updatedArticle)
     }

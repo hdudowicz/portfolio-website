@@ -8,13 +8,15 @@ import java.time.LocalDate
 data class CommentEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: String = "",
-    @Column(nullable = false)
-    val authorId: String,
+    val id: Long = 0,
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    val author: AuthorEntity,
     @Column
     val content: String,
     @Column(nullable = false)
     val publicationDate: LocalDate,
     @ManyToOne
+    @JoinColumn(name = "article_id")
     val article: ArticleEntity
 )

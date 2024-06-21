@@ -17,7 +17,8 @@ class PostService(private val postRepository: PostRepository,
     fun createPost(post: PostEntity, username: String): PostEntity {
         val user = userRepository.findByUsername(username)
         if (user != null) {
-            post.author = user.username
+            TODO()
+//            post.author = user.username
             return postRepository.save(post)
         } else {
             throw Exception("User not found.")
@@ -28,11 +29,12 @@ class PostService(private val postRepository: PostRepository,
         val post = getPostById(id)
         val user = userRepository.findByUsername(username)
         if (post != null) {
-            if (post.author == user?.username) {
-                postRepository.deleteById(id)
-            } else {
-                throw Exception("Permission denied.")
-            }
+            TODO()
+//            if (post.author == user?.username) {
+//                postRepository.deleteById(id)
+//            } else {
+//                throw Exception("Permission denied.")
+//            }
         } else {
             throw Exception("Post not found.")
         }
