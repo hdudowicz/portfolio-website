@@ -11,7 +11,6 @@ data class ArticleEntity(
     val title: String,
     @Column(columnDefinition = "TEXT")
     val content: String,
-
     val authorId: String,
     val publicationDate: LocalDate,
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)

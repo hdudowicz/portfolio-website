@@ -30,7 +30,7 @@ class PostController(private val postService: PostService) {
      * @return The blog post with the given id.
      */
     @GetMapping("/{id}")
-    fun getPostById(@PathVariable id: Long): PostEntity? = postService.getPostById(id)
+    fun getPostById(@PathVariable id: String ): PostEntity? = postService.getPostById(id)
 
     /**
      * Create a new blog post.
@@ -53,5 +53,5 @@ class PostController(private val postService: PostService) {
      */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    fun deletePost(@PathVariable id: Long, @RequestParam username: String) = postService.deletePost(id, username)
+    fun deletePost(@PathVariable id: String , @RequestParam username: String) = postService.deletePost(id, username)
 }

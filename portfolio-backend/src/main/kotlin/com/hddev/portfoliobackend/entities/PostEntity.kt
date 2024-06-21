@@ -12,11 +12,11 @@ import java.time.LocalDateTime
 class PostEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    val id: String ? = null,
     val title: String = "",
     val content: String = "",
 
-    @ManyToOne var author: String? = null,
+    var author: String? = null,
     @ManyToMany var categories: List<CategoryEntity> = listOf(),
 
     val createdAt: LocalDateTime = LocalDateTime.now(),

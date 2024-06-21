@@ -12,7 +12,7 @@ class PostService(private val postRepository: PostRepository,
 
     fun getAllPosts(): List<PostEntity> = postRepository.findAll()
 
-    fun getPostById(id: Long): PostEntity? = postRepository.findById(id).orElse(null)
+    fun getPostById(id: String ): PostEntity? = postRepository.findById(id).orElse(null)
 
     fun createPost(post: PostEntity, username: String): PostEntity {
         val user = userRepository.findByUsername(username)
@@ -24,7 +24,7 @@ class PostService(private val postRepository: PostRepository,
         }
     }
 
-    fun deletePost(id: Long, username: String) {
+    fun deletePost(id: String , username: String) {
         val post = getPostById(id)
         val user = userRepository.findByUsername(username)
         if (post != null) {

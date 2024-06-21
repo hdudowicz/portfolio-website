@@ -27,11 +27,5 @@ data class UserEntity(
         var password: String,
 
         @Column(nullable = false)
-        val role: String,
-
-        @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL])
-        val projects: List<ProjectEntity> = emptyList(),
-
-        @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL])
-        val articles: List<ArticleEntity> = emptyList()
+        val role: String
 )

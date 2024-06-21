@@ -13,7 +13,7 @@ class ArticleService(private val articleRepository: ArticleRepository) {
         return articleRepository.findAll()
     }
 
-    fun getArticleById(articleId: Long): ArticleEntity? {
+    fun getArticleById(articleId: String ): ArticleEntity? {
         return articleRepository.findByIdOrNull(articleId)
     }
 
@@ -27,7 +27,7 @@ class ArticleService(private val articleRepository: ArticleRepository) {
         return articleRepository.save(article)
     }
 
-    fun updateArticle(articleId: Long, articleRequest: ArticleRequest): ArticleEntity? {
+    fun updateArticle(articleId: String , articleRequest: ArticleRequest): ArticleEntity? {
         val existingArticle = articleRepository.findByIdOrNull(articleId) ?: return null
         val updatedArticle = existingArticle.copy(
             title = articleRequest.title,
@@ -38,7 +38,7 @@ class ArticleService(private val articleRepository: ArticleRepository) {
         return articleRepository.save(updatedArticle)
     }
 
-    fun deleteArticle(articleId: Long) {
+    fun deleteArticle(articleId: String ) {
         articleRepository.deleteById(articleId)
     }
 }

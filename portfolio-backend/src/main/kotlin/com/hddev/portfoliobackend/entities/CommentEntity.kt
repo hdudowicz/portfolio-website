@@ -7,7 +7,7 @@ import java.time.LocalDate
 data class CommentEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val author: String,
     @Column(columnDefinition = "TEXT")
     val content: String,

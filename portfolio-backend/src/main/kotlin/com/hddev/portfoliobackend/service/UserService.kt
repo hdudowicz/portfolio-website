@@ -9,11 +9,11 @@ class UserService(private val userRepository: UserRepository) {
 
     fun getAllUsers(): List<UserEntity> = userRepository.findAll()
 
-    fun getUserById(id: Long): UserEntity? = userRepository.findById(id).orElse(null)
+    fun getUserById(id: String ): UserEntity? = userRepository.findById(id).orElse(null)
 
     fun createUser(user: UserEntity): UserEntity = userRepository.save(user)
 
-    fun updateUser(id: Long, newUserDetails: UserEntity): UserEntity? {
+    fun updateUser(id: String , newUserDetails: UserEntity): UserEntity? {
         val user = getUserById(id)
         if (user != null) {
             user.username = newUserDetails.username
@@ -25,7 +25,7 @@ class UserService(private val userRepository: UserRepository) {
         }
     }
 
-    fun deleteUser(id: Long) {
+    fun deleteUser(id: String ) {
         val user = getUserById(id)
         if (user != null) {
             userRepository.deleteById(id)

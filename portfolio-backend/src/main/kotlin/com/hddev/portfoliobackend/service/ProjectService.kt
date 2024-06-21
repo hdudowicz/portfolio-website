@@ -12,24 +12,24 @@ class ProjectService(
 //    fun getAllProjects(): List<ProjectDTO> =
 //        projectRepository.findAll().map { it.toDTO() }
 //
-//    fun getProjectById(id: Long): ProjectDTO =
+//    fun getProjectById(id: String ): ProjectDTO =
 //        projectRepository.findById(id)
 //            .orElseThrow { ResourceNotFoundException("Project", "id", id) }
 //            .toDTO()
 //
-//    fun createProject(projectDTO: ProjectDTO, userId: Long): ProjectDTO {
+//    fun createProject(projectDTO: ProjectDTO, userid: String ): ProjectDTO {
 //        val user = userRepository.findById(userId).orElseThrow { ResourceNotFoundException("User", "id", userId) }
 //        val project = projectDTO.toEntity(user)
 //        return projectRepository.save(project).toDTO()
 //    }
 //
-//    fun updateProject(id: Long, projectDTO: ProjectDTO): ProjectDTO {
+//    fun updateProject(id: String , projectDTO: ProjectDTO): ProjectDTO {
 //        val project = projectRepository.findById(id).orElseThrow { ResourceNotFoundException("Project", "id", id) }
 //        project.update(projectDTO)
 //        return projectRepository.save(project).toDTO()
 //    }
 //
-//    fun deleteProject(id: Long) {
+//    fun deleteProject(id: String ) {
 //        projectRepository.deleteById(id)
 //    }
 }

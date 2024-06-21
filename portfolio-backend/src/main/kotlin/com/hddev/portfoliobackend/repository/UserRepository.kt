@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository
  * @see org.springframework.data.jpa.repository.JpaRepository
  */
 @Repository
-interface UserRepository : JpaRepository<UserEntity, Long> {
+interface UserRepository : JpaRepository<UserEntity, String> {
 
     /**
      * A method to find a user by their username.

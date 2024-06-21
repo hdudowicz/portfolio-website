@@ -9,3 +9,4 @@ class PortfolioBackendApplication
 fun main(args: Array<String>) {
 	runApplication<PortfolioBackendApplication>(*args)
 }
+

@@ -6,7 +6,7 @@ import jakarta.persistence.*
 data class ProjectEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val title: String,
     val description: String,
     @ElementCollection
@@ -15,8 +15,7 @@ data class ProjectEntity(
     val screenshots: List<String>,
     val liveDemoLink: String?,
     val sourceCodeLink: String?,
-    @ManyToOne
-    val author: AuthorEntity,
+    val authorId: String,
     @ManyToMany
     val relatedArticles: List<ArticleEntity> = emptyList(),
     @ManyToMany

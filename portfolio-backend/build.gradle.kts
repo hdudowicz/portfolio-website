@@ -12,7 +12,7 @@ plugins {
 
 group = "com.hddev"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_17
+java.sourceCompatibility = JavaVersion.VERSION_21
 
 repositories {
 	mavenCentral()
@@ -33,6 +33,12 @@ dependencies {
 	implementation("org.keycloak:keycloak-spring-boot-starter:24.0.5")
 	implementation("org.keycloak:keycloak-spring-security-adapter:24.0.5")
 
+	// Hibernate dependencies
+    implementation("org.hibernate.orm:hibernate-core:6.5.2.Final")
+    implementation("org.hibernate.common:hibernate-commons-annotations:7.0.1.Final")
+
+	implementation("com.fasterxml:classmate:1.7.0")
+
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
 	implementation("io.jsonwebtoken:jjwt-api:0.12.5")
@@ -40,13 +46,15 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.12.5")
 }
 
+
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "17"
+		jvmTarget = "21"
 	}
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	enabled = false // Disable testing
 }

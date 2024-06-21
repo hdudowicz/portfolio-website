@@ -24,7 +24,7 @@ class ArticleController(
     }
 
     @GetMapping("/{articleId}")
-    fun getArticleById(@PathVariable articleId: Long): ResponseEntity<ArticleEntity> {
+    fun getArticleById(@PathVariable articleId: String ): ResponseEntity<ArticleEntity> {
         val article = articleService.getArticleById(articleId)
         return if (article != null) {
             ResponseEntity.ok(article)
@@ -46,7 +46,7 @@ class ArticleController(
     @PutMapping("/{articleId}")
     @RolesAllowed("ROLE_ADMIN")
     fun updateArticle(
-        @PathVariable articleId: Long,
+        @PathVariable articleId: String ,
         @RequestBody articleRequest: ArticleRequest
     ): ResponseEntity<ArticleDTO> {
         if (!authenticationService.isAdmin()) {
@@ -62,7 +62,7 @@ class ArticleController(
 
     @DeleteMapping("/{articleId}")
     @RolesAllowed("ROLE_ADMIN")
-    fun deleteArticle(@PathVariable articleId: Long): ResponseEntity<Void> {
+    fun deleteArticle(@PathVariable articleId: String ): ResponseEntity<Void> {
         if (!authenticationService.isAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
         }

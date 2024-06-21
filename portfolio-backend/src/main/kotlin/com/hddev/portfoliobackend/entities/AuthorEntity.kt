@@ -6,12 +6,8 @@ import jakarta.persistence.*
 data class AuthorEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val name: String,
     val email: String,
-    val bio: String?,
-    @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val articles: List<ArticleEntity> = emptyList(),
-    @OneToMany(mappedBy = "author", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val projects: List<ProjectEntity> = emptyList()
+    val bio: String?
 )

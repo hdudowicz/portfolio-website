@@ -8,8 +8,6 @@ data class UserDTO(
     val email: String,
     val password: String,
     val role: String,
-    val projects: List<ProjectDTO>,
-    val articles: List<ArticleDTO>
 )
 
 fun UserEntity.toDTO() = UserDTO(
@@ -18,6 +16,4 @@ fun UserEntity.toDTO() = UserDTO(
     email = email,
     password = password,
     role = role,
-    projects = projects.map { it.toDTO() },
-    articles = articles.map { it.toDTO() }
 )

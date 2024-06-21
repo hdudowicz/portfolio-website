@@ -6,7 +6,7 @@ import jakarta.persistence.*
 data class ContactMessageEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val name: String,
     val email: String,
     val subject: String,

@@ -9,7 +9,7 @@ import jakarta.persistence.Id
 data class SkillEntity(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    val id: String = "",
     val name: String,
     val proficiencyLevel: Int,
     val description: String?

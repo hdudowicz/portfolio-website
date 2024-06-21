@@ -4,7 +4,7 @@ import com.hddev.portfoliobackend.entities.ContactMessageEntity
 
 // ContactMessageDTO.kt
 data class ContactMessageDTO(
-    val id: Long?,
+    val id: String ?,
     val name: String,
     val email: String,
     val subject: String,

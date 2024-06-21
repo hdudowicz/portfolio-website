@@ -9,5 +9,5 @@ import jakarta.persistence.Id
 class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
+    var id: String ? = null
 }
