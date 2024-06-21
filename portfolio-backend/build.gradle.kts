@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -29,7 +30,7 @@ dependencies {
 	implementation("com.mysql:mysql-connector-j:8.4.0")
 
 	// AUTH
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-security:3.3.0")
 	implementation("org.keycloak:keycloak-spring-boot-starter:24.0.5")
 	implementation("org.keycloak:keycloak-spring-security-adapter:24.0.5")
 
@@ -48,9 +49,9 @@ dependencies {
 
 
 tasks.withType<KotlinCompile> {
-	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "21"
+	compilerOptions {
+		freeCompilerArgs.add("-Xjsr305=strict")
+		jvmTarget.set(JvmTarget.JVM_21)
 	}
 }
 
