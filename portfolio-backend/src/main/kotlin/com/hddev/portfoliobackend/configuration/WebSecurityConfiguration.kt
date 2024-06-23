@@ -2,11 +2,14 @@ package com.hddev.portfoliobackend.configuration
 
 import com.hddev.portfoliobackend.auth.JwtAuthConverter
 import lombok.RequiredArgsConstructor
+import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.oauth2.jwt.JwtDecoder
+import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
 import org.springframework.security.web.SecurityFilterChain
 
 @RequiredArgsConstructor
@@ -29,6 +32,11 @@ class WebSecurityConfiguration {
             .jwtAuthenticationConverter(jwtAuthConverter)
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         return http.build()
+    }
+
+    @Bean
+    fun jwtDecoder(properties: OAuth2ResourceServerProperties): JwtDecoder {
+        return NimbusJwtDecoder.withJwkSetUri(properties.jwt.issuerUri).build()
     }
 
 //    @Bean
