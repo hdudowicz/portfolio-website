@@ -14,5 +14,5 @@ data class ScreenshotEntity(
     val description: String? = null,
     @ManyToOne
     @JoinColumn(name = "project_id")
-    val project: ProjectEntity
+    val project: ProjectEntity,
 )

@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component
 
 @Component
 class JwtAuthConverter : Converter<Jwt, JwtAuthenticationToken> {
-
     private val jwtGrantedAuthoritiesConverter = JwtGrantedAuthoritiesConverter()
 
     override fun convert(jwt: Jwt): JwtAuthenticationToken {

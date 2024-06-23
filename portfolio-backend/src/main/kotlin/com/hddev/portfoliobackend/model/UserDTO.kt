@@ -10,10 +10,11 @@ data class UserDTO(
     val role: String,
 )
 
-fun UserEntity.toDTO() = UserDTO(
-    id = id,
-    username = username,
-    email = email,
-    password = password,
-    role = role,
-)
+fun UserEntity.toDTO() =
+    UserDTO(
+        id = id,
+        username = username,
+        email = email,
+        password = password,
+        role = role,
+    )

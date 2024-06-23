@@ -27,7 +27,7 @@ data class ProjectEntity(
     @JoinTable(
         name = "project_article",
         joinColumns = [JoinColumn(name = "project_id")],
-        inverseJoinColumns = [JoinColumn(name = "article_id")]
+        inverseJoinColumns = [JoinColumn(name = "article_id")],
     )
-    val relatedArticles: List<ArticleEntity> = emptyList()
+    val relatedArticles: List<ArticleEntity> = emptyList(),
 )

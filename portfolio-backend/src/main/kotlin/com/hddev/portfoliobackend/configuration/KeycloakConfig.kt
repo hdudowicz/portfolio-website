@@ -6,7 +6,6 @@ import org.springframework.context.annotation.Configuration
 
 @Configuration
 class KeycloakConfig {
-
     @Bean
     fun keycloakConfigResolver(): KeycloakSpringBootConfigResolver {
         return KeycloakSpringBootConfigResolver()

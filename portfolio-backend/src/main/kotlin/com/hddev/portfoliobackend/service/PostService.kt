@@ -1,20 +1,23 @@
 package com.hddev.portfoliobackend.service
 
-import com.hddev.portfoliobackend.repository.UserRepository
 import com.hddev.portfoliobackend.entities.PostEntity
 import com.hddev.portfoliobackend.repository.PostRepository
+import com.hddev.portfoliobackend.repository.UserRepository
 import org.springframework.stereotype.Service
 
 @Service
-class PostService(private val postRepository: PostRepository,
-                  private val userRepository: UserRepository
+class PostService(
+    private val postRepository: PostRepository,
+    private val userRepository: UserRepository,
 ) {
-
     fun getAllPosts(): List<PostEntity> = postRepository.findAll()
 
-    fun getPostById(id: String ): PostEntity? = postRepository.findById(id).orElse(null)
+    fun getPostById(id: Long): PostEntity? = postRepository.findById(id).orElse(null)
 
-    fun createPost(post: PostEntity, username: String): PostEntity {
+    fun createPost(
+        post: PostEntity,
+        username: String,
+    ): PostEntity {
         val user = userRepository.findByUsername(username)
         if (user != null) {
             TODO()
@@ -25,7 +28,10 @@ class PostService(private val postRepository: PostRepository,
         }
     }
 
-    fun deletePost(id: String , username: String) {
+    fun deletePost(
+        id: Long,
+        username: String,
+    ) {
         val post = getPostById(id)
         val user = userRepository.findByUsername(username)
         if (post != null) {

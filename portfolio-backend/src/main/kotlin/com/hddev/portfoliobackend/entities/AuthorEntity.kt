@@ -13,5 +13,5 @@ data class AuthorEntity(
     @Column
     val email: String,
     @Column(nullable = true)
-    val bio: String?
+    val bio: String?,
 )

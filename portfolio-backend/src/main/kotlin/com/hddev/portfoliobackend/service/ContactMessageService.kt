@@ -7,8 +7,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class ContactMessageService(private val contactMessageRepository: ContactMessageRepository) {
-    fun getAllContactMessages(): List<ContactMessageDTO> =
-        contactMessageRepository.findAll().map { it.toDTO() }
+    fun getAllContactMessages(): List<ContactMessageDTO> = contactMessageRepository.findAll().map { it.toDTO() }
 
 //    fun createContactMessage(contactMessageDTO: ContactMessageDTO): ContactMessageDTO {
 //        val contactMessage = contactMessageDTO.toEntity()

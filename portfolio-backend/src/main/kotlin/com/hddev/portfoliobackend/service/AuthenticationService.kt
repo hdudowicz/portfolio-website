@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service
 
 @Service
 class AuthenticationService {
-
     fun getCurrentUser(): KeycloakAuthenticationToken? {
         val authentication = SecurityContextHolder.getContext().authentication
         return if (authentication is KeycloakAuthenticationToken) {

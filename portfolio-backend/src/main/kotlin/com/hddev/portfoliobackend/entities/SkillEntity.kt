@@ -13,5 +13,5 @@ data class SkillEntity(
     @Column
     val proficiencyLevel: Int,
     @Column(nullable = true)
-    val description: String?
+    val description: String?,
 )

@@ -7,12 +7,13 @@ data class SkillDTO(
     val id: Long?,
     val name: String,
     val proficiencyLevel: Int,
-    val description: String?
+    val description: String?,
 )
 
-fun SkillEntity.toDTO() = SkillDTO(
-    id = id,
-    name = name,
-    proficiencyLevel = proficiencyLevel,
-    description = description
-)
+fun SkillEntity.toDTO() =
+    SkillDTO(
+        id = id,
+        name = name,
+        proficiencyLevel = proficiencyLevel,
+        description = description,
+    )

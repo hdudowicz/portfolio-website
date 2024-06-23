@@ -21,5 +21,5 @@ data class ArticleEntity(
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
     val comments: List<CommentEntity> = emptyList(),
     @ManyToMany(mappedBy = "relatedArticles")
-    val relatedProjects: List<ProjectEntity> = emptyList()
+    val relatedProjects: List<ProjectEntity> = emptyList(),
 )

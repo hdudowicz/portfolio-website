@@ -7,13 +7,14 @@ data class ArticleDTO(
     val title: String,
     val content: String,
     val publicationDate: String,
-    val authorId: Long
+    val authorId: Long,
 )
 
-fun ArticleEntity.toDTO() = ArticleDTO(
-    id = id,
-    title = title,
-    content = content,
-    publicationDate = publicationDate.toString(),
-    authorId = author.id
-)
+fun ArticleEntity.toDTO() =
+    ArticleDTO(
+        id = id,
+        title = title,
+        content = content,
+        publicationDate = publicationDate.toString(),
+        authorId = author.id,
+    )

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class ProjectService(
     private val projectRepository: ProjectRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
 ) {
 //    fun getAllProjects(): List<ProjectDTO> =
 //        projectRepository.findAll().map { it.toDTO() }

@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/articles")
 class ArticleController(
     private val authenticationService: AuthenticationService,
-    private val articleService: ArticleService
+    private val articleService: ArticleService,
 ) {
     @GetMapping
     fun getAllArticles(): ResponseEntity<List<ArticleEntity>> {
@@ -24,7 +24,9 @@ class ArticleController(
     }
 
     @GetMapping("/{articleId}")
-    fun getArticleById(@PathVariable articleId: String ): ResponseEntity<ArticleEntity> {
+    fun getArticleById(
+        @PathVariable articleId: String,
+    ): ResponseEntity<ArticleEntity> {
         val article = articleService.getArticleById(articleId)
         return if (article != null) {
             ResponseEntity.ok(article)
@@ -35,7 +37,9 @@ class ArticleController(
 
     @PostMapping
     @RolesAllowed("ROLE_ADMIN")
-    fun createArticle(@RequestBody articleRequest: ArticleRequest): ResponseEntity<ArticleEntity> {
+    fun createArticle(
+        @RequestBody articleRequest: ArticleRequest,
+    ): ResponseEntity<ArticleEntity> {
         if (!authenticationService.isAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
         }
@@ -46,8 +50,8 @@ class ArticleController(
     @PutMapping("/{articleId}")
     @RolesAllowed("ROLE_ADMIN")
     fun updateArticle(
-        @PathVariable articleId: String ,
-        @RequestBody articleRequest: ArticleRequest
+        @PathVariable articleId: String,
+        @RequestBody articleRequest: ArticleRequest,
     ): ResponseEntity<ArticleDTO> {
         if (!authenticationService.isAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
@@ -62,7 +66,9 @@ class ArticleController(
 
     @DeleteMapping("/{articleId}")
     @RolesAllowed("ROLE_ADMIN")
-    fun deleteArticle(@PathVariable articleId: String ): ResponseEntity<Void> {
+    fun deleteArticle(
+        @PathVariable articleId: String,
+    ): ResponseEntity<Void> {
         if (!authenticationService.isAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
         }

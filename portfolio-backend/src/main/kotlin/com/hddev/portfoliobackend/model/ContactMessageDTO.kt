@@ -8,13 +8,14 @@ data class ContactMessageDTO(
     val name: String,
     val email: String,
     val subject: String,
-    val message: String
+    val message: String,
 )
 
-fun ContactMessageEntity.toDTO() = ContactMessageDTO(
-    id = id,
-    name = name,
-    email = email,
-    subject = subject,
-    message = message
-)
+fun ContactMessageEntity.toDTO() =
+    ContactMessageDTO(
+        id = id,
+        name = name,
+        email = email,
+        subject = subject,
+        message = message,
+    )

@@ -9,37 +9,41 @@ import org.springframework.stereotype.Service
 
 @Service
 class ArticleService(private val articleRepository: ArticleRepository, private val authorRepository: AuthorRepository) {
-
     fun getAllArticles(): List<ArticleEntity> {
         return articleRepository.findAll()
     }
 
-    fun getArticleById(articleId: String ): ArticleEntity? {
+    fun getArticleById(articleId: String): ArticleEntity? {
         return articleRepository.findByIdOrNull(articleId)
     }
 
     fun createArticle(articleRequest: ArticleRequest): ArticleEntity {
-        val article = ArticleEntity(
-            title = articleRequest.title,
-            content = articleRequest.content,
-            publicationDate = articleRequest.publicationDate.toLocalDate(),
-            author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
-        )
+        val article =
+            ArticleEntity(
+                title = articleRequest.title,
+                content = articleRequest.content,
+                publicationDate = articleRequest.publicationDate.toLocalDate(),
+                author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
+            )
         return articleRepository.save(article)
     }
 
-    fun updateArticle(articleId: String , articleRequest: ArticleRequest): ArticleEntity? {
+    fun updateArticle(
+        articleId: String,
+        articleRequest: ArticleRequest,
+    ): ArticleEntity? {
         val existingArticle = articleRepository.findByIdOrNull(articleId) ?: return null
-        val updatedArticle = existingArticle.copy(
-            title = articleRequest.title,
-            content = articleRequest.content,
-            publicationDate = articleRequest.publicationDate.toLocalDate(),
-            author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
-        )
+        val updatedArticle =
+            existingArticle.copy(
+                title = articleRequest.title,
+                content = articleRequest.content,
+                publicationDate = articleRequest.publicationDate.toLocalDate(),
+                author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
+            )
         return articleRepository.save(updatedArticle)
     }
 
-    fun deleteArticle(articleId: String ) {
+    fun deleteArticle(articleId: String) {
         articleRepository.deleteById(articleId)
     }
 }

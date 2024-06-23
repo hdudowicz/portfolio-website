@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping("/api/posts")
 class PostController(private val postService: PostService) {
-
     /**
      * Get all blog posts.
      *
@@ -30,7 +29,9 @@ class PostController(private val postService: PostService) {
      * @return The blog post with the given id.
      */
     @GetMapping("/{id}")
-    fun getPostById(@PathVariable id: String ): PostEntity? = postService.getPostById(id)
+    fun getPostById(
+        @PathVariable id: Long,
+    ): PostEntity? = postService.getPostById(id)
 
     /**
      * Create a new blog post.
@@ -42,7 +43,10 @@ class PostController(private val postService: PostService) {
      */
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    fun createPost(@RequestBody post: PostEntity, @RequestParam username: String): PostEntity = postService.createPost(post, username)
+    fun createPost(
+        @RequestBody post: PostEntity,
+        @RequestParam username: String,
+    ): PostEntity = postService.createPost(post, username)
 
     /**
      * Delete a blog post by its id.
@@ -53,5 +57,8 @@ class PostController(private val postService: PostService) {
      */
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    fun deletePost(@PathVariable id: String , @RequestParam username: String) = postService.deletePost(id, username)
+    fun deletePost(
+        @PathVariable id: Long,
+        @RequestParam username: String,
+    ) = postService.deletePost(id, username)
 }

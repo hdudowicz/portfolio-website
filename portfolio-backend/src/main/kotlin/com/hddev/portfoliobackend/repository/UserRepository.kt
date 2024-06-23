@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository
  * @see org.springframework.data.jpa.repository.JpaRepository
  */
 @Repository
-interface UserRepository : JpaRepository<UserEntity, String> {
-
+interface UserRepository : JpaRepository<UserEntity, Long> {
     /**
      * A method to find a user by their username.
      * Spring Data JPA will automatically generate the implementation based on the method name.
@@ -24,5 +23,4 @@ interface UserRepository : JpaRepository<UserEntity, String> {
     fun findByUsername(username: String): UserEntity?
 
     fun findByEmail(email: String): UserEntity?
-
 }

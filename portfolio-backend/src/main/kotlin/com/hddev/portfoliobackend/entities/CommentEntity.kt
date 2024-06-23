@@ -18,5 +18,5 @@ data class CommentEntity(
     val publicationDate: LocalDate,
     @ManyToOne
     @JoinColumn(name = "article_id")
-    val article: ArticleEntity
+    val article: ArticleEntity,
 )

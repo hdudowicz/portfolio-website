@@ -9,5 +9,5 @@ data class CategoryEntity(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
     @Column
-    val name: String
+    val name: String,
 )

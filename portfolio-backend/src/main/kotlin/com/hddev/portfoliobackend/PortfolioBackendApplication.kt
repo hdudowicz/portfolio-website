@@ -9,6 +9,5 @@ import org.springframework.boot.runApplication
 class PortfolioBackendApplication
 
 fun main(args: Array<String>) {
-	runApplication<PortfolioBackendApplication>(*args)
+    runApplication<PortfolioBackendApplication>(*args)
 }
-

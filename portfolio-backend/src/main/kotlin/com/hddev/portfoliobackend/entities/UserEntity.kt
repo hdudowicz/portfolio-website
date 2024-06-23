@@ -23,5 +23,5 @@ data class UserEntity(
     @Column(nullable = false)
     var password: String,
     @Column(nullable = false)
-    val role: String
+    val role: String,
 )

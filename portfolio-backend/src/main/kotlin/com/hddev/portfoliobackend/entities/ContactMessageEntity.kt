@@ -15,5 +15,5 @@ data class ContactMessageEntity(
     @Column
     val subject: String,
     @Column
-    val message: String
+    val message: String,
 )

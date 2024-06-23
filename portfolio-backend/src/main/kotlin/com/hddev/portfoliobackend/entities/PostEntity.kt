@@ -20,11 +20,11 @@ data class PostEntity(
     @JoinTable(
         name = "post_category",
         joinColumns = [JoinColumn(name = "post_id")],
-        inverseJoinColumns = [JoinColumn(name = "category_id")]
+        inverseJoinColumns = [JoinColumn(name = "category_id")],
     )
     val categories: List<CategoryEntity> = emptyList(),
     @Column
     val createdAt: LocalDateTime = LocalDateTime.now(),
     @Column(nullable = true)
-    val updatedAt: LocalDateTime? = null
+    val updatedAt: LocalDateTime? = null,
 )
