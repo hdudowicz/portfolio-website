@@ -1,0 +1,9 @@
+$primaryColor: #ff6b6b;
+$primaryTextColor: #ffffff;
+
+@import '~primeng/resources/themes/saga-blue/theme.css';
+
+.p-button {
+  background-color: $primaryColor;
+  color: $primaryTextColor;
+}

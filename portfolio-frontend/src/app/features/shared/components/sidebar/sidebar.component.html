@@ -1,0 +1,26 @@
+<p-sidebar [(visible)]="visible" [baseZIndex]="10000">
+    <h3>Navigation</h3>
+    <ul>
+      <li>
+        <a routerLink="/home">
+          <i class="pi pi-home"></i> Home
+        </a>
+      </li>
+      <li>
+        <a routerLink="/projects">
+          <i class="pi pi-briefcase"></i> Projects
+        </a>
+      </li>
+      <li>
+        <a routerLink="/contact">
+          <i class="pi pi-envelope"></i> Contact
+        </a>
+      </li>
+      <li>
+        <a routerLink="/about">
+          <i class="pi pi-info-circle"></i> About
+        </a>
+      </li>
+    </ul>
+  </p-sidebar>
+  <button type="button" (click)="toggleSidebar()">Toggle Sidebar</button>
