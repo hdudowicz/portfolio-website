@@ -7,13 +7,19 @@ import { SidebarComponent } from './features/shared/components/sidebar/sidebar.c
 import { SidebarModule } from 'primeng/sidebar';
 import { ContactComponent } from './features/contact/contact.component';
 import { ProjectsComponent } from './features/projects/projects.component';
+import { AboutComponent } from './features/about/about.component';
+import { HomeComponent } from './features/home/home.component';
+import { FooterComponent } from './features/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
+    HomeComponent,
+    AboutComponent,
+    ProjectsComponent,
     ContactComponent,
-    ProjectsComponent
+    FooterComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -21,6 +27,6 @@ import { ProjectsComponent } from './features/projects/projects.component';
     SidebarModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
