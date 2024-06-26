@@ -15,6 +15,8 @@ import { ProjectsComponent } from './features/projects/projects.component';
 import { AboutComponent } from './features/about/about.component';
 import { HomeComponent } from './features/home/home.component';
 import { FooterComponent } from './features/footer/footer.component';
+import { ImportsModule } from './imports.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { FooterComponent } from './features/footer/footer.component';
     RippleModule, 
     AvatarModule, 
     StyleClassModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule,
+    ImportsModule
     
   ],
   providers: [],
