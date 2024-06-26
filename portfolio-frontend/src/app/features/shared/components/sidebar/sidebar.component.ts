@@ -1,14 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Sidebar, SidebarModule } from 'primeng/sidebar';
+
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+
 })
 export class SidebarComponent {
-  visible: boolean = false;
+  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
+  
+  sidebarVisible: boolean = true;
 
-  toggleSidebar() {
-    this.visible = !this.visible;
-  }
+    closeCallback(e: Event): void {
+        this.sidebarRef.close(e);
+    }
 }

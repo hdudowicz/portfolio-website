@@ -5,7 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidebarComponent } from './features/shared/components/sidebar/sidebar.component';
 import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { AvatarModule } from 'primeng/avatar';
+import { StyleClassModule } from 'primeng/styleclass';
 import { ContactComponent } from './features/contact/contact.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProjectsComponent } from './features/projects/projects.component';
 import { AboutComponent } from './features/about/about.component';
 import { HomeComponent } from './features/home/home.component';
@@ -24,7 +29,13 @@ import { FooterComponent } from './features/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SidebarModule
+    SidebarModule, 
+    ButtonModule, 
+    RippleModule, 
+    AvatarModule, 
+    StyleClassModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent],
