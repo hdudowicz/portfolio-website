@@ -1,3 +1,13 @@
-<app-sidebar></app-sidebar>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<div class="flex h-screen">
+  <div class="fixed top-0 left-0 h-full">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="flex flex-col flex-grow ml-64">
+    <div class="flex-grow overflow-auto">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="flex-shrink-0">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

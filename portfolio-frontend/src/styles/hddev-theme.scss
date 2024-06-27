@@ -1,0 +1,36 @@
+@import '~primeng/resources/themes/saga-blue/theme.css';
+@import 'variables';
+// You can add more PrimeNG variables as needed
+// :root {
+//   // Primary color
+//   --primary-color: var(--persian-green);
+//   --primary-color-text: #ffffff;
+
+//   // Secondary color
+//   --secondary-color: var(--saffron);
+//   --secondary-color-text: #000000;
+
+//   // Background and surface colors
+//   --surface-a: #ffffff;
+//   --surface-b: #f8f9fa;
+//   --surface-c: #e9ecef;
+//   --surface-d: #dee2e6;
+//   --surface-e: #ffffff;
+//   --surface-f: #ffffff;
+//   --background-color: var(--surface-b);
+
+//   // Text colors
+//   --text-color: var(--charcoal);
+//   --text-color-secondary: #6c757d;
+
+//   // Error color
+//   --error-color: var(--burnt-sienna);
+
+//   // Font
+//   --primary-font-family: 'Roboto', sans-serif;
+// }
+
+.p-button {
+  background-color: $primaryColor;
+  color: $primaryTextColor;
+}

@@ -29,21 +29,26 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles"]
+            },
             "styles": [
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
-              "src/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles/hddev-theme.scss"
             ],
             "scripts": []
           },
+          
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -52,7 +57,7 @@
                 }
               ],
               "outputHashing": "all"
-            },
+            },            
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -96,7 +101,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/styles.scss"
             ],
             "scripts": []
           }

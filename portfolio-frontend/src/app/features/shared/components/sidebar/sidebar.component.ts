@@ -1,19 +1,23 @@
-import { Component, ViewChild } from '@angular/core';
-import { Sidebar, SidebarModule } from 'primeng/sidebar';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-
 })
 export class SidebarComponent {
-  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
-  
-  sidebarVisible: boolean = true;
+  isCollapsed: boolean = false;
+  sidebarItems = [
+    { name: 'Dashboard', icon: 'pi pi-home' },
+    { name: 'Bookmarks', icon: 'pi pi-bookmark' },
+    { name: 'Reports', icon: 'pi pi-chart-line' },
+    { name: 'Team', icon: 'pi pi-users' },
+    { name: 'Messages', icon: 'pi pi-comments' },
+    { name: 'Calendar', icon: 'pi pi-calendar' },
+    { name: 'Settings', icon: 'pi pi-cog' },
+  ];
 
-    closeCallback(e: Event): void {
-        this.sidebarRef.close(e);
-    }
+  toggleSidebar() {
+    this.isCollapsed = !this.isCollapsed;
+  }
 }

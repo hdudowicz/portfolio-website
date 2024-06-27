@@ -1,0 +1,55 @@
+@import '../../../../../styles/variables';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  transition: width 0.3s;
+  background-color: $surfaceA;
+  color: $textColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: $backgroundColorDark;
+
+  &.collapsed {
+    width: 60px;
+  }
+
+  .sidebar-items {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+      color: $primaryTextColor;
+      text-decoration: none;
+
+      i {
+        margin-right: 1rem;
+      }
+
+      &:hover {
+        background-color: $highlightBg;
+      }
+    }
+  }
+
+  .toggle-button {
+    background: none;
+    border: none;
+    color: $textColor;
+    cursor: pointer;
+    padding: 1rem;
+    text-align: center;
+
+    i {
+      font-size: 1.5rem;
+    }
+  }
+}

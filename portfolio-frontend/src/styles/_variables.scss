@@ -1,0 +1,64 @@
+// Base colors
+$charcoal: #264653;
+$persian-green: #2a9d8f;
+$saffron: #e9c46a;
+$sandy-brown: #f4a261;
+$burnt-sienna: #e76f51;
+
+// Theme colors
+$primary-color: $persian-green;
+$secondary-color: $saffron;
+$accent-1: $sandy-brown;
+$accent-2: $burnt-sienna;
+
+// Neutral colors
+$neutral-50: #f8f9fa;
+$neutral-100: #e9ecef;
+$neutral-200: #dee2e6;
+$neutral-300: #ced4da;
+$neutral-400: #adb5bd;
+$neutral-500: #6c757d;
+$neutral-600: #495057;
+$neutral-700: #343a40;
+$neutral-800: #212529;
+$neutral-900: #121416;
+
+// PrimeNG theme variable overrides
+$primaryColor: $primary-color;
+$primaryLightColor: lighten($primary-color, 10%);
+$primaryDarkColor: darken($primary-color, 10%);
+$primaryDarkerColor: darken($primary-color, 20%);
+$primaryTextColor: #ffffff;
+
+$highlightBg: $secondary-color;
+$highlightTextColor: #000000;
+
+$errorColor: $burnt-sienna;
+$successColor: #28a745;
+$infoColor: #17a2b8;
+$warningColor: $saffron;
+
+$fontFamily: "Roboto", sans-serif;
+$fontSize: 1rem;
+$textColor: $neutral-700;
+$textSecondaryColor: $neutral-600;
+
+$surfaceA: #ffffff;
+$surfaceB: $neutral-50;
+$surfaceC: $neutral-100;
+$surfaceD: $neutral-200;
+$surfaceE: #ffffff;
+$surfaceF: #ffffff;
+
+$backgroundColor: $surfaceB;
+$backgroundColorDark: $neutral-800;
+
+$contentBg: $surfaceB;
+$contentAltBg: $surfaceC;
+
+$inputBorder: $neutral-300;
+$inputFocusBorderColor: $primary-color;
+
+$borderRadius: 4px;
+
+$transitionDuration: 0.2s;
