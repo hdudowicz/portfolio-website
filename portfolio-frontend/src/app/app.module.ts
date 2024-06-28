@@ -19,17 +19,19 @@ import { ImportsModule } from './imports.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AnimatedBackgroundComponent } from "./features/shared/components/animated-background/animated-background.component";
 import { ScrambleTextEffectComponent } from './features/shared/components/scramble-text-effect/scramble-text-effect.component';
+import { ProjectCardComponent } from './features/projects/project-card/project-card.component';
+import { ProjectsModule } from './features/projects/projects.module';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
-        ProjectsComponent,
         ContactComponent,
         FooterComponent,
         SidebarComponent,
-        ScrambleTextEffectComponent
+        ScrambleTextEffectComponent,
+        ProjectCardComponent,
     ],
     providers: [],
     bootstrap: [AppComponent],
@@ -44,6 +46,7 @@ import { ScrambleTextEffectComponent } from './features/shared/components/scramb
         BrowserAnimationsModule,
         DragDropModule,
         ImportsModule,
+        ProjectsModule,
         AnimatedBackgroundComponent
     ]
 })
