@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router } from '@angular/router';
 
 interface SidebarItem {
@@ -13,13 +13,15 @@ interface SidebarItem {
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent {
-  isCollapsed: boolean = false;
+  
   sidebarItems: SidebarItem[] = [
     { name: 'Home', icon: 'pi pi-home', route: '/home' },
     { name: 'Projects', icon: 'pi pi-briefcase', route: '/projects' },
     { name: 'Contact', icon: 'pi pi-envelope', route: '/contact' },
     { name: 'About', icon: 'pi pi-info-circle', route: '/about' },
   ];
+
+  @HostBinding('class.collapsed') isCollapsed = false;
 
   constructor(private router: Router) {}
 

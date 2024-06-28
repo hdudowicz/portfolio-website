@@ -1,12 +1,16 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="sidebar-items py-0">
-        <a pRipple class="sidebar-item cursor-pointer" *ngFor="let item of sidebarItems" (click)="navigateTo(item.route)">
-            <i [class]="item.icon"></i>
-            <span *ngIf="!isCollapsed">{{ item.name }}</span>
-        </a>
+    <div class="sidebar-top">
+        <object type="image/svg+xml" data="assets/img/logo1_white.svg" class="logo" *ngIf="!isCollapsed">
+            Your browser does not support SVGs
+        </object>
+        <div class="sidebar-items py-0">
+            <a pRipple class="sidebar-item cursor-pointer" *ngFor="let item of sidebarItems" (click)="navigateTo(item.route)">
+                <i [class]="item.icon"></i>
+                <span *ngIf="!isCollapsed">{{ item.name }}</span>
+            </a>
+        </div>
     </div>
     <button class="toggle-button" (click)="toggleSidebar()">
         <i class="pi" [ngClass]="{'pi-chevron-left': !isCollapsed, 'pi-chevron-right': isCollapsed}"></i>
     </button>
 </div>
-                                                                                                           
