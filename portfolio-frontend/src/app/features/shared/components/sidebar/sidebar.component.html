@@ -1,6 +1,6 @@
 <div class="sidebar" [class.collapsed]="isCollapsed">
-    <div class="sidebar-items">
-        <a pRipple class="sidebar-item" *ngFor="let item of sidebarItems">
+    <div class="sidebar-items py-0">
+        <a pRipple class="sidebar-item cursor-pointer" *ngFor="let item of sidebarItems" (click)="navigateTo(item.route)">
             <i [class]="item.icon"></i>
             <span *ngIf="!isCollapsed">{{ item.name }}</span>
         </a>
