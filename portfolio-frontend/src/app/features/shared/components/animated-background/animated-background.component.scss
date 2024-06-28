@@ -1,0 +1,60 @@
+// Mixin to generate random dots with text-shadow
+@mixin dots($count) {
+  $text-shadow: ();
+  @for $i from 0 through $count {
+    $text-shadow: $text-shadow,
+                 (-.5+(random()) * 3) + em // Random horizontal position
+                 (-.5+(random()) * 3) + em // Random vertical position
+                 7px // Blur radius
+                 hsla(random() * 360, 100%, 50%,.9); // Random color with high saturation and lightness
+  }
+  text-shadow: $text-shadow;
+}
+
+:host {
+  overflow: hidden;
+  background: #123;
+  display: block;
+  font-size: 52px;
+  color: transparent;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: -1;
+}
+
+// Pseudo-elements for animation
+:host::before, :host::after {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 3em;
+  height: 3em;
+  content: '.';
+  mix-blend-mode: screen; // Blend mode for color effect
+  animation: 88s -54s move infinite ease-in-out alternate; // Animation properties
+}
+
+// Before pseudo-element specific styling
+:host::before {
+  @include dots(40); // Include dots mixin with 40 dots
+  animation-duration: 88s;
+  animation-delay: -54s;
+}
+
+// After pseudo-element specific styling
+:host::after {
+  @include dots(40); // Include dots mixin with 40 dots
+  animation-duration: 86s;
+  animation-delay: -64s;
+}
+
+// Keyframes for move animation
+@keyframes move {
+  from {
+    transform: rotate(0deg) scale(12) translateX(-20px); // Initial state
+  }
+  to {
+    transform: rotate(360deg) scale(18) translateX(20px); // Final state
+  }
+}

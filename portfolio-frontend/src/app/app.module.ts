@@ -17,31 +17,32 @@ import { HomeComponent } from './features/home/home.component';
 import { FooterComponent } from './features/footer/footer.component';
 import { ImportsModule } from './imports.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AnimatedBackgroundComponent } from "./features/shared/components/animated-background/animated-background.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    AboutComponent,
-    ProjectsComponent,
-    ContactComponent,
-    FooterComponent,
-    SidebarComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SidebarModule, 
-    ButtonModule, 
-    RippleModule, 
-    AvatarModule, 
-    StyleClassModule,
-    BrowserAnimationsModule,
-    DragDropModule,
-    ImportsModule
-    
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        ProjectsComponent,
+        ContactComponent,
+        FooterComponent,
+        SidebarComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SidebarModule,
+        ButtonModule,
+        RippleModule,
+        AvatarModule,
+        StyleClassModule,
+        BrowserAnimationsModule,
+        DragDropModule,
+        ImportsModule,
+        AnimatedBackgroundComponent
+    ]
 })
 export class AppModule { }
