@@ -2,10 +2,12 @@
   <object type="image/svg+xml" data="assets/img/logo1_white.svg" class="w-64 h-64 mb-4">
     Your browser does not support SVGs
   </object>
-  <h1 class="text-4xl font-bold mb-2">Welcome to My Portfolio</h1>
-  <p class="text-lg mb-2">Hi, I'm Hubert, a full stack and mobile developer.</p>
-  <p class="text-lg mb-4">Explore my projects and the services I offer.</p>
-  <a href="#projects" class="text-white font-bold py-2 px-4 rounded mb-4">View My Projects</a>
+  <h1 class="text-4xl font-bold mb-8">Welcome to My Portfolio</h1>
+  <app-scramble-text-effect class="mb-16"
+    [textItems]="subtitltTextItems">
+  </app-scramble-text-effect>
+
+  <a routerLink="/projects" class="text-white font-bold py-2 px-4 rounded mb-4">View My Projects</a>
   <div class="fixed bottom-0 right-0 p-4 flex space-x-4">
     <a href="https://github.com/hubert" target="_blank" class="text-gray-400 hover:text-white">
       <i class="pi pi-github" style="font-size: 2em;"></i>

@@ -18,6 +18,7 @@ import { FooterComponent } from './features/footer/footer.component';
 import { ImportsModule } from './imports.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AnimatedBackgroundComponent } from "./features/shared/components/animated-background/animated-background.component";
+import { ScrambleTextEffectComponent } from './features/shared/components/scramble-text-effect/scramble-text-effect.component';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,8 @@ import { AnimatedBackgroundComponent } from "./features/shared/components/animat
         ProjectsComponent,
         ContactComponent,
         FooterComponent,
-        SidebarComponent
+        SidebarComponent,
+        ScrambleTextEffectComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
