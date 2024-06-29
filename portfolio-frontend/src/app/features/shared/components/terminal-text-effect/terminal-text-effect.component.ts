@@ -18,12 +18,13 @@ interface TextItem {
       display: block;
       color: white;
       margin: auto;
+      font-family: 'Courier New', Courier, monospace;
     }
     .console-underscore {
       display: inline-block;
       position: relative;
       top: -0.14em;
-      left: 10px;
+      left: 0.1em;
     }
     .hidden {
       opacity: 0;

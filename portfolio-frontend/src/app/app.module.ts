@@ -34,7 +34,6 @@ import { KeycloakService } from 'keycloak-angular';
         FooterComponent,
         SidebarComponent,
         ScrambleTextEffectComponent,
-        ProjectCardComponent,
         TerminalTextEffectComponent
     ],
     providers: [

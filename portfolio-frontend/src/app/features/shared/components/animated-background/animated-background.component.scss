@@ -38,23 +38,21 @@
 // Before pseudo-element specific styling
 :host::before {
   @include dots(40); // Include dots mixin with 40 dots
-  animation-duration: 88s;
-  animation-delay: -54s;
+  animation: 88s -54s move infinite ease-in-out alternate;
 }
 
 // After pseudo-element specific styling
 :host::after {
   @include dots(40); // Include dots mixin with 40 dots
-  animation-duration: 86s;
-  animation-delay: -64s;
+  animation: 86s -64s move infinite ease-in-out alternate;
 }
 
 // Keyframes for move animation
 @keyframes move {
   from {
-    transform: rotate(0deg) scale(12) translateX(-20px); // Initial state
+    transform: rotate(0deg) scale(7) translateX(-20px); // Initial state
   }
   to {
-    transform: rotate(360deg) scale(18) translateX(20px); // Final state
+    transform: rotate(360deg) scale(20) translateX(20px); // Final state
   }
 }
