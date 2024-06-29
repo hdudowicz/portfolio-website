@@ -38,12 +38,12 @@ import { KeycloakService } from 'keycloak-angular';
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
-        // {
-        //     provide: APP_INITIALIZER,
-        //     useFactory: initializeKeycloak,
-        //     multi: true,
-        //     deps: [KeycloakService]
-        // }
+        {
+            provide: APP_INITIALIZER,
+            useFactory: initializeKeycloak,
+            multi: true,
+            deps: [KeycloakService]
+        }
     ],
     bootstrap: [AppComponent],
     imports: [
