@@ -6,6 +6,7 @@ import { KeycloakService } from 'keycloak-angular';
 })
 export class AuthService {
   constructor(private keycloakService: KeycloakService) {}
+  
 
   getToken(): Promise<string> {
     return this.keycloakService.getToken();
