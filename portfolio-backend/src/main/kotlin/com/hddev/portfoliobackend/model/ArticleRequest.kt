@@ -5,6 +5,6 @@ import java.time.LocalDateTime
 data class ArticleRequest(
     val title: String,
     val content: String,
-    val authorId: Long,
+    val userId: Long,
     val publicationDate: LocalDateTime,
 )

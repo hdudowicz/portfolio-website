@@ -21,8 +21,8 @@ data class ProjectEntity(
     @Column
     val sourceCodeLink: String?,
     @ManyToOne
-    @JoinColumn(name = "author_id")
-    val author: AuthorEntity,
+    @JoinColumn(name = "user_id")
+    val user: UserEntity,
     @ManyToMany
     @JoinTable(
         name = "project_article",

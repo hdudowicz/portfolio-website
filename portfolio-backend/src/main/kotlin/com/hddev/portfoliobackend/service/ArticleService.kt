@@ -3,12 +3,12 @@ package com.hddev.portfoliobackend.service
 import com.hddev.portfoliobackend.entities.ArticleEntity
 import com.hddev.portfoliobackend.model.ArticleRequest
 import com.hddev.portfoliobackend.repository.ArticleRepository
-import com.hddev.portfoliobackend.repository.AuthorRepository
+import com.hddev.portfoliobackend.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class ArticleService(private val articleRepository: ArticleRepository, private val authorRepository: AuthorRepository) {
+class ArticleService(private val articleRepository: ArticleRepository, private val userRepository: UserRepository) {
     fun getAllArticles(): List<ArticleEntity> {
         return articleRepository.findAll()
     }
@@ -23,7 +23,8 @@ class ArticleService(private val articleRepository: ArticleRepository, private v
                 title = articleRequest.title,
                 content = articleRequest.content,
                 publicationDate = articleRequest.publicationDate.toLocalDate(),
-                author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
+                user = userRepository.findByIdOrNull(articleRequest.userId)
+                    ?: throw NoSuchElementException("User not found"),
             )
         return articleRepository.save(article)
     }
@@ -38,7 +39,8 @@ class ArticleService(private val articleRepository: ArticleRepository, private v
                 title = articleRequest.title,
                 content = articleRequest.content,
                 publicationDate = articleRequest.publicationDate.toLocalDate(),
-                author = authorRepository.findByIdOrNull(articleRequest.authorId) ?: throw NoSuchElementException("Author not found"),
+                user = userRepository.findByIdOrNull(articleRequest.userId)
+                    ?: throw NoSuchElementException("User not found"),
             )
         return articleRepository.save(updatedArticle)
     }

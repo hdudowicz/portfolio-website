@@ -14,8 +14,8 @@ data class ArticleEntity(
     @Column
     val content: String,
     @ManyToOne
-    @JoinColumn(name = "author_id")
-    val author: AuthorEntity,
+    @JoinColumn(name = "user_id")
+    val user: UserEntity,
     @Column
     val publicationDate: LocalDate,
     @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
