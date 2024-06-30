@@ -24,6 +24,7 @@ import { TerminalTextEffectComponent } from './features/shared/components/termin
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { initializeKeycloak } from './core/auth/keycloak-init';
 import { KeycloakService } from 'keycloak-angular';
+import { AuthGuard } from './features/shared/guards/auth.guard';
 
 @NgModule({
     declarations: [
@@ -43,7 +44,8 @@ import { KeycloakService } from 'keycloak-angular';
             useFactory: initializeKeycloak,
             multi: true,
             deps: [KeycloakService]
-        }
+        },
+        AuthGuard
     ],
     bootstrap: [AppComponent],
     imports: [

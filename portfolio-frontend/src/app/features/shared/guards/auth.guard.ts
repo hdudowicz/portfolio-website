@@ -11,12 +11,13 @@ export class AuthGuard extends KeycloakAuthGuard {
     protected override readonly router: Router,
     protected override readonly keycloakAngular: KeycloakService
   ) {
-    super(router, keycloakAngular);
+    super(router as any, keycloakAngular);
   }
   
-  async isAccessAllowed(
+  public override async isAccessAllowed(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+    state: RouterStateSnapshot
+  ): Promise<boolean | UrlTree> {
     
     if (!this.authenticated) {
       await this.keycloakAngular.login({

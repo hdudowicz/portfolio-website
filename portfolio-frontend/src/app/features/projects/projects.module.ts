@@ -4,13 +4,15 @@ import { ImportsModule } from 'src/app/imports.module';
 import { DataViewModule } from 'primeng/dataview';
 import { ProjectsComponent } from './projects.component';
 import { ProjectCardComponent } from './project-card/project-card.component';
+import { KeycloakAngularModule } from 'keycloak-angular';
 
 @NgModule({
   declarations: [ProjectsComponent, ProjectCardComponent],
   imports: [
     CommonModule,
     ImportsModule,
-    DataViewModule
+    DataViewModule,
+    KeycloakAngularModule
   ],
   exports: [ProjectsComponent]
 })

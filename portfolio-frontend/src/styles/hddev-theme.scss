@@ -34,3 +34,17 @@
   background-color: $primaryColor;
   color: $primaryTextColor;
 }
+
+.p-dataview {
+  &.custom-transparent {
+    background: transparent;
+
+    .p-dataview-content {
+      background: transparent;
+    }
+
+    .p-paginator {
+      background: transparent;
+    }
+  }
+}

@@ -2,12 +2,7 @@
   <h2 class="text-4xl font-bold mb-4">Projects</h2>
   <p class="mb-6">Here are some of the projects I've worked on:</p>
 
-  <p-dataView #dv [value]="projects" [paginator]="true" [rows]="6" layout="grid">
-    <ng-template pTemplate="header">
-      <div class="flex justify-content-end">
-        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
-      </div>
-    </ng-template>
+  <p-dataView #dv [value]="projects" [paginator]="true" [rows]="6" layout="grid" styleClass="custom-transparent">
 
     <ng-template let-project pTemplate="gridItem">
       <div class="col-12 sm:col-6 lg:col-4 p-2">

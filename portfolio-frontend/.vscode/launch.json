@@ -7,7 +7,11 @@
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "npm: start",
-      "url": "http://localhost:4200/"
+      "url": "http://localhost:4200/",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/snap/bin/brave",
+      "runtimeArgs": ["--remote-debugging-port=9222"],
+      "userDataDir": "${workspaceFolder}/.vscode/brave-debug-profile"
     },
     {
       "name": "ng test",
