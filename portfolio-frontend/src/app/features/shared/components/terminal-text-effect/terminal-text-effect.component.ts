@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input, ElementRef, ViewChild } from '@angular/core';
 
 interface TextItem {
   text: string;
@@ -31,7 +31,7 @@ interface TextItem {
     }
   `]
 })
-export class TerminalTextEffectComponent implements OnInit {
+export class TerminalTextEffectComponent implements OnInit, OnDestroy {
   @Input() textItems: TextItem[] = []
   
   @ViewChild('textElement', { static: true }) textElement!: ElementRef;
@@ -42,16 +42,32 @@ export class TerminalTextEffectComponent implements OnInit {
   private waiting = false;
   private visible = true;
 
+  private consoleTextInterval: any;
+  private blinkUnderscoreInterval: any;
+
   ngOnInit() {
+    this.startEffect();
+  }
+
+  ngOnDestroy() {
+    this.stopEffect();
+  }
+
+  startEffect() {
     this.consoleText();
     this.blinkUnderscore();
+  }
+
+  stopEffect() {
+    clearInterval(this.consoleTextInterval);
+    clearInterval(this.blinkUnderscoreInterval);
   }
 
   private consoleText() {
     const target = this.textElement.nativeElement;
     target.style.color = this.textItems[0].color;
 
-    setInterval(() => {
+    this.consoleTextInterval = setInterval(() => {
       if (this.letterCount === 0 && !this.waiting) {
         this.waiting = true;
         target.innerHTML = this.textItems[0].text.substring(0, this.letterCount);
@@ -78,7 +94,7 @@ export class TerminalTextEffectComponent implements OnInit {
   }
 
   private blinkUnderscore() {
-    setInterval(() => {
+    this.blinkUnderscoreInterval = setInterval(() => {
       if (this.visible) {
         this.consoleElement.nativeElement.className = 'console-underscore hidden';
         this.visible = false;
