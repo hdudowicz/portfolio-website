@@ -7,7 +7,7 @@ data class ProjectDTO(
     val title: String,
     val description: String,
     val technologies: String,
-    val screenshots: List<Long>,
+//    val screenshots: List<Long>,
     val sourceCodeLink: String?,
     val userId: Long,
 )
@@ -18,7 +18,7 @@ fun ProjectEntity.toDTO() =
         title = title,
         description = description,
         technologies = technologies,
-        screenshots = screenshots.map { it.id },
+//        screenshots = screenshots.map { it.id },
         sourceCodeLink = sourceCodeLink,
         userId = user.id,
     )

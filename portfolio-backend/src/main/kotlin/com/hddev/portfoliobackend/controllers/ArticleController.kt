@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/articles")
+@RequestMapping("/articles")
 class ArticleController(
     private val authenticationService: AuthenticationService,
     private val articleService: ArticleService,

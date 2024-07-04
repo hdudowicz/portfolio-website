@@ -14,8 +14,8 @@ data class ProjectEntity(
     val description: String,
     @Column
     val technologies: String,
-    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val screenshots: List<ScreenshotEntity> = emptyList(),
+//    @OneToMany(mappedBy = "project", cascade = [CascadeType.ALL], orphanRemoval = true)
+//    val screenshots: List<ScreenshotEntity> = emptyList(),
     @Column
     val liveDemoLink: String?,
     @Column
@@ -23,11 +23,11 @@ data class ProjectEntity(
     @ManyToOne
     @JoinColumn(name = "user_id")
     val user: UserEntity,
-    @ManyToMany
-    @JoinTable(
-        name = "project_article",
-        joinColumns = [JoinColumn(name = "project_id")],
-        inverseJoinColumns = [JoinColumn(name = "article_id")],
-    )
-    val relatedArticles: List<ArticleEntity> = emptyList(),
+//    @ManyToMany
+//    @JoinTable(
+//        name = "project_article",
+//        joinColumns = [JoinColumn(name = "project_id")],
+//        inverseJoinColumns = [JoinColumn(name = "article_id")],
+//    )
+//    val relatedArticles: List<ArticleEntity> = emptyList(),
 )

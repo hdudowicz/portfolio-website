@@ -32,7 +32,7 @@ class ProjectService(
         existingProject.copy(
             title = projectDTO.title,
                 description = projectDTO.description,
-                technologies = projectDTO.technologies,
+//                technologies = projectDTO.technologies,
                 sourceCodeLink = projectDTO.sourceCodeLink,
                 liveDemoLink = null
         )
@@ -56,7 +56,7 @@ fun ProjectEntity.toDTO() = ProjectDTO(
     title = title,
     description = description,
     technologies = technologies,
-    screenshots = screenshots.map { it.id },
+//    screenshots = screenshots.map { it.id },
     sourceCodeLink = sourceCodeLink,
     userId = user.id
 )
@@ -69,7 +69,7 @@ fun ProjectDTO.toEntity(userRepository: UserRepository) = ProjectEntity(
     sourceCodeLink = sourceCodeLink,
     user = userRepository.findById(userId)
         .orElseThrow { ResourceNotFoundException("User", "id", userId) },
-    liveDemoLink = null,
-    screenshots = listOf(),
-    relatedArticles = listOf()
+    liveDemoLink = null
+//    screenshots = listOf(),
+//    relatedArticles = listOf()
 )

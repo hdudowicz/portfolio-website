@@ -18,8 +18,8 @@ data class ArticleEntity(
     val user: UserEntity,
     @Column
     val publicationDate: LocalDate,
-    @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
-    val comments: List<CommentEntity> = emptyList(),
-    @ManyToMany(mappedBy = "relatedArticles")
-    val relatedProjects: List<ProjectEntity> = emptyList(),
+//    @OneToMany(mappedBy = "article", cascade = [CascadeType.ALL], orphanRemoval = true)
+//    val comments: List<CommentEntity> = emptyList(),
+//    @ManyToMany(mappedBy = "relatedArticles")
+//    val relatedProjects: List<ProjectEntity> = emptyList(),
 )
