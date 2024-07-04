@@ -1,13 +1,13 @@
 <p-card [style]="{ width: '360px' }">
-  <ng-template pTemplate="header">
-    <img *ngIf="project.screenshots.length > 0" [src]="getScreenshotUrl(project.screenshots[0])" alt="Project Screenshot" class="w-full">
-  </ng-template>
+<!--  <ng-template pTemplate="header">-->
+<!--    <img *ngIf="project.screenshots.length > 0" [src]="getScreenshotUrl(project.screenshots[0])" alt="Project Screenshot" class="w-full">-->
+<!--  </ng-template>-->
   <ng-template pTemplate="title">
     {{ project.title }}
   </ng-template>
   <ng-template pTemplate="content">
     <p>{{ project.description }}</p>
-    <p-chip *ngFor="let tech of technologies" [label]="tech" class="mr-2 mb-2"></p-chip>
+<!--    <p-chip *ngFor="let tech of technologies" [label]="tech" class="mr-2 mb-2"></p-chip>-->
   </ng-template>
   <ng-template pTemplate="footer">
     <a *ngIf="project.sourceCodeLink" [href]="project.sourceCodeLink" target="_blank">

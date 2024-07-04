@@ -3,8 +3,8 @@ export interface ProjectDTO {
     title: string;
     description: string;
     technologies: string;
-    screenshots: number[];
+    // screenshots: number[];
     sourceCodeLink: string | null;
     authorId: number;
+    userId: number;
   }
-  
