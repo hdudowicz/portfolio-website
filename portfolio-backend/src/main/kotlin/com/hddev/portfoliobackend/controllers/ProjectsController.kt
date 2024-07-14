@@ -15,9 +15,9 @@ class ProjectsController(
 ) {
 
     @GetMapping
-    fun getAllProjects(): List<ProjectDTO> {
+    fun getAllProjects(): ResponseEntity<List<ProjectDTO>> {
         val projects = projectService.getAllProjects()
-        return projects
+        return ResponseEntity.ok(projects)
     }
 
     @GetMapping("/{id}")

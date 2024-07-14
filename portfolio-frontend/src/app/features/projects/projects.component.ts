@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from 'src/app/core/http/project.service';
 import { ProjectDTO } from 'src/app/core/models/project-dto';
+import {catchError, of} from "rxjs";
 
 
 @Component({
@@ -18,12 +19,13 @@ export class ProjectsComponent implements OnInit {
   }
 
   loadProjects() {
-    this.projectService.getProjects().subscribe(
+    this.projectService.getProjects().pipe(catchError(error => {
+      console.error('Error fetching projects:', error)
+      //TODO handle error
+      return of([])
+    })).subscribe(
       (data: ProjectDTO[]) => {
         this.projects = data;
-      },
-      (error: any) => {
-        console.error('Error fetching projects:', error);
       }
     );
   }

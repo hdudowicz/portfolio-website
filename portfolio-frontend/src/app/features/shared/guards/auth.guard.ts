@@ -1,30 +1,35 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
-import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
+import { KeycloakService } from 'keycloak-angular';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard extends KeycloakAuthGuard {
-  
+export class AdminAuthGuard implements CanActivate {
   constructor(
-    protected override readonly router: Router,
-    protected override readonly keycloakAngular: KeycloakService
-  ) {
-    super(router as any, keycloakAngular);
-  }
-  
-  public override async isAccessAllowed(
+    private keycloakService: KeycloakService,
+    private router: Router
+  ) {}
+
+  canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Promise<boolean | UrlTree> {
-    
-    if (!this.authenticated) {
-      await this.keycloakAngular.login({
-        redirectUri: window.location.origin + state.url,
-      });
-    }
+  ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return new Promise(async (resolve, _) => {
+      if (!this.keycloakService.isLoggedIn()) {
+        await this.router.navigate(['/login']);
+        return resolve(false);
+      }
 
-    return this.authenticated;
+      const hasRequiredRoles = this.keycloakService.isUserInRole('admin');
+
+      if (hasRequiredRoles) {
+        resolve(true);
+      } else {
+        await this.router.navigate(['/access-denied']);
+        resolve(false);
+      }
+    });
   }
 }

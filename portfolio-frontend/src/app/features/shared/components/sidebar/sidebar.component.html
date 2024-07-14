@@ -4,10 +4,11 @@
             Your browser does not support SVGs
         </object>
         <div class="sidebar-items py-0">
-            <a pRipple class="sidebar-item cursor-pointer" *ngFor="let item of sidebarItems" (click)="navigateTo(item.route)">
+            <a pRipple class="sidebar-item cursor-pointer" *ngFor="let item of sidebarItems$ | async" (click)="navigateTo(item.route)">
                 <i [class]="item.icon"></i>
                 <span *ngIf="!isCollapsed">{{ item.name }}</span>
             </a>
+            <app-login-button [collapsed]="isCollapsed" class="login-button"></app-login-button>
         </div>
     </div>
     <button class="toggle-button" (click)="toggleSidebar()">

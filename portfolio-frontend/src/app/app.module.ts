@@ -23,7 +23,10 @@ import { TerminalTextEffectComponent } from './features/shared/components/termin
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { initializeKeycloak } from './core/auth/keycloak-init';
 import { KeycloakService } from 'keycloak-angular';
-import { AuthGuard } from './features/shared/guards/auth.guard';
+import {EditorModule} from "primeng/editor";
+import {AdminAuthGuard} from "./features/shared/guards/auth.guard";
+import {AccessDeniedComponent} from "./features/shared/components/access-denied/access-denied.component";
+import {LoginButtonComponent} from "./features/shared/components/login-button/login-button.component";
 
 @NgModule({
     declarations: [
@@ -34,7 +37,9 @@ import { AuthGuard } from './features/shared/guards/auth.guard';
         FooterComponent,
         SidebarComponent,
         ScrambleTextEffectComponent,
-        TerminalTextEffectComponent
+        TerminalTextEffectComponent,
+        AccessDeniedComponent,
+        LoginButtonComponent
     ],
     providers: [
         provideHttpClient(withInterceptorsFromDi()),
@@ -44,7 +49,7 @@ import { AuthGuard } from './features/shared/guards/auth.guard';
             multi: true,
             deps: [KeycloakService]
         },
-        AuthGuard
+        AdminAuthGuard
     ],
     bootstrap: [AppComponent],
     imports: [
@@ -59,7 +64,8 @@ import { AuthGuard } from './features/shared/guards/auth.guard';
         DragDropModule,
         ImportsModule,
         ProjectsModule,
-        AnimatedBackgroundComponent
+        AnimatedBackgroundComponent,
+        EditorModule
     ]
 })
 export class AppModule { }

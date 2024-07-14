@@ -10,7 +10,9 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       },
       initOptions: {
         onLoad: 'check-sso',
-        checkLoginIframe: false
+        checkLoginIframe: false,
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
       }
     });
 }

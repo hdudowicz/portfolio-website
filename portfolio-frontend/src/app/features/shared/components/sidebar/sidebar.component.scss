@@ -74,6 +74,25 @@
     }
   }
 
+  .login-button {
+    display: flex;
+    align-items: center;
+    padding: 0.2rem 0rem;
+    color: $neutral-200;
+    text-decoration: none;
+    transition: background-color $transitionDuration, color $transitionDuration;
+
+    &:hover {
+      background-color: rgba($primaryColor, 0.1);
+      color: $primaryColor;
+    }
+
+    &.active {
+      background-color: $primaryColor;
+      color: $primaryTextColor;
+    }
+  }
+
   .toggle-button {
     background: none;
     border: none;
