@@ -10,6 +10,7 @@ data class ProjectDTO(
 //    val screenshots: List<Long>,
     val sourceCodeLink: String?,
     val userId: Long,
+    //TODO: Add articles to projects?
 )
 
 fun ProjectEntity.toDTO() =

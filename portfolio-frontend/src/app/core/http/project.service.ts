@@ -3,13 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProjectDTO } from '../models/project-dto';
 import { AuthService } from './auth.service';
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  // private apiUrl = `${environment.apiUrl}/projects`;
-  private apiUrl = `http://localhost:8081/projects`;
+  private apiUrl = `${environment.apiUrl}/projects`;
+
 
   constructor(
     private http: HttpClient,

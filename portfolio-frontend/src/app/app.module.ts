@@ -18,7 +18,6 @@ import { ImportsModule } from './imports.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { AnimatedBackgroundComponent } from "./features/shared/components/animated-background/animated-background.component";
 import { ScrambleTextEffectComponent } from './features/shared/components/scramble-text-effect/scramble-text-effect.component';
-import { ProjectCardComponent } from './features/projects/project-card/project-card.component';
 import { ProjectsModule } from './features/projects/projects.module';
 import { TerminalTextEffectComponent } from './features/shared/components/terminal-text-effect/terminal-text-effect.component';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
