@@ -2,6 +2,7 @@ import {Component, HostBinding, OnDestroy, OnInit} from '@angular/core';
 import {BehaviorSubject, catchError, from, map, Observable, of, Subject, takeUntil} from "rxjs";
 import {KeycloakService} from "keycloak-angular";
 import {Router} from "@angular/router";
+import { EditorModule } from 'primeng/editor';
 
 interface SidebarItem {
   name: string;
@@ -50,7 +51,8 @@ export class SidebarComponent implements OnInit, OnDestroy{
         const currentItems = this.sidebarItemsSubject.value;
         this.sidebarItemsSubject.next([
           ...currentItems,
-          { name: 'Admin', icon: 'pi pi-cog', route: '/admin' }
+          { name: 'Admin', icon: 'pi pi-cog', route: '/admin' },
+          { name: 'Create Article', icon: 'pi pi-plus', route: '/admin/create-article' },
         ]);
       }
     });

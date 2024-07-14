@@ -32,8 +32,8 @@ export class LoginButtonComponent {
     this.init();
   }
 
-  async init() {
-    this.isLoggedIn = await this.keycloakService.isLoggedIn();
+  init() {
+    this.isLoggedIn = this.keycloakService.isLoggedIn();
   }
 
   login() {

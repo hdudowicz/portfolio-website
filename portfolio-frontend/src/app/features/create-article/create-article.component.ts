@@ -8,7 +8,7 @@ import {catchError} from "rxjs";
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
-  styleUrls: ['./create-article.component.css'],
+  styleUrls: ['./create-article.component.scss'],
   imports: [
     ImportsModule
   ],

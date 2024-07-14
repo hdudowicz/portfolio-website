@@ -8,6 +8,7 @@
                 <i [class]="item.icon"></i>
                 <span *ngIf="!isCollapsed">{{ item.name }}</span>
             </a>
+
             <app-login-button [collapsed]="isCollapsed" class="login-button"></app-login-button>
         </div>
     </div>
