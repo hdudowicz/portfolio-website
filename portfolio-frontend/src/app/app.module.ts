@@ -27,6 +27,7 @@ import {EditorModule} from "primeng/editor";
 import {AdminAuthGuard} from "./features/shared/guards/auth.guard";
 import {AccessDeniedComponent} from "./features/shared/components/access-denied/access-denied.component";
 import {LoginButtonComponent} from "./features/shared/components/login-button/login-button.component";
+import { QuillModule } from 'ngx-quill'
 
 @NgModule({
     declarations: [
@@ -65,7 +66,8 @@ import {LoginButtonComponent} from "./features/shared/components/login-button/lo
         ImportsModule,
         ProjectsModule,
         AnimatedBackgroundComponent,
-        EditorModule
+        EditorModule,
+        QuillModule.forRoot()
     ]
 })
 export class AppModule { }

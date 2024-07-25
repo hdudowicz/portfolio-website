@@ -34,14 +34,15 @@
             },
             "styles": [
               "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.snow.css",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
               "src/styles/styles.scss",
               "src/styles/hddev-theme.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/quill/dist/quill.js"
+            ]
           },
 
           "configurations": {

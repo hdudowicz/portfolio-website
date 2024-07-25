@@ -6,7 +6,8 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8080/',
         realm: 'master',
-        clientId: 'web-app'
+        clientId: 'web-app',
+
       },
       initOptions: {
         onLoad: 'check-sso',

@@ -3,14 +3,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { KeycloakService } from 'keycloak-angular';
 import {ImportsModule} from "../../imports.module";
 import {ArticleService} from "../../core/http/article.service";
-import {catchError} from "rxjs";
+import {catchError, throwError} from "rxjs";
+import {QuillEditorComponent} from "ngx-quill";
 
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
   styleUrls: ['./create-article.component.scss'],
   imports: [
-    ImportsModule
+    ImportsModule,
+    QuillEditorComponent
   ],
   standalone: true
 })
@@ -43,22 +45,31 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.articleForm.valid) {
+    if (this.articleForm.valid && this.userId) {
       const articleData = {
         ...this.articleForm.value,
         publicationDate: new Date().toISOString(),
         userId: this.userId
       };
-      this.articleService.createArticle(articleData).pipe(catchError(err => {
-        console.error('Error creating article:', err);
-        return err
-      })).subscribe(
-        (response) => {
+      this.articleService.createArticle(articleData).pipe(
+        catchError(err => {
+          console.error('Error creating article:', err);
+          // TODO: Handle error
+
+          return throwError(() => err);
+        })
+      ).subscribe({
+        next: (response) => {
           console.log('Article created successfully:', response);
-          // Reset form or navigate to article list
           this.articleForm.reset();
+        },
+        error: (error) => {
+          console.error('Error in subscribe:', error);
+          // TODO: Handle error
         }
-      );
+      });
+    } else {
+      console.error('Form is invalid or userId is not available');
     }
   }
 }
