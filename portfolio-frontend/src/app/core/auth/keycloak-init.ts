@@ -6,13 +6,13 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       config: {
         url: 'http://localhost:8080/',
         realm: 'master',
-        clientId: 'frontend'
+        clientId: 'web-app'
       },
       initOptions: {
         onLoad: 'check-sso',
         checkLoginIframe: false,
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
+        // silentCheckSsoRedirectUri:
+        //   window.location.origin + '/assets/silent-check-sso.html'
       }
     });
 }

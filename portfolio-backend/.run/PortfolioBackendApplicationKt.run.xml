@@ -1,0 +1,43 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="PortfolioBackendApplicationKt" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+    <additionalParameters>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="spring.datasource.password" />
+        <option name="value" value="AdminPass1" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="server.port" />
+        <option name="value" value="8081" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="keycloak.credentials.secret" />
+        <option name="value" value="f1RKVCmhCSrTHfdLPsfGExvU2WNUOyCF" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="keycloak.resource" />
+        <option name="value" value="core-service" />
+      </param>
+      <param>
+        <option name="enabled" value="true" />
+        <option name="name" value="spring.datasource.username" />
+        <option name="value" value="root" />
+      </param>
+    </additionalParameters>
+    <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
+    <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+    <module name="portfolio-backend.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.hddev.portfoliobackend.PortfolioBackendApplicationKt" />
+    <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+      <option name="credential" />
+      <option name="region" />
+      <option name="useCurrentConnection" value="false" />
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
