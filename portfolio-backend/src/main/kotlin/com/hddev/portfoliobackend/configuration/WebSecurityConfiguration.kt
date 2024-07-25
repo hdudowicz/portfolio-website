@@ -4,11 +4,18 @@ import com.hddev.portfoliobackend.auth.JwtAuthConverter
 import org.springframework.boot.autoconfigure.security.oauth2.resource.OAuth2ResourceServerProperties
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.core.convert.converter.Converter
+import org.springframework.security.authentication.AbstractAuthenticationToken
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
+import org.springframework.security.config.web.server.ServerHttpSecurity.http
+import org.springframework.security.core.GrantedAuthority
+import org.springframework.security.core.authority.SimpleGrantedAuthority
+import org.springframework.security.oauth2.jwt.Jwt
 import org.springframework.security.oauth2.jwt.JwtDecoder
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
@@ -32,7 +39,7 @@ class WebSecurityConfiguration(private val jwtAuthConverter: JwtAuthConverter) {
             .oauth2ResourceServer { oauth2ResourceServer ->
                 oauth2ResourceServer
                     .jwt { jwt ->
-                        jwt.jwtAuthenticationConverter(jwtAuthConverter)
+                        jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
                     }
             }
             .sessionManagement { sessionManagement ->
@@ -42,8 +49,23 @@ class WebSecurityConfiguration(private val jwtAuthConverter: JwtAuthConverter) {
     }
 
     @Bean
+    fun jwtAuthenticationConverter(): Converter<Jwt, AbstractAuthenticationToken> {
+        val jwtConverter = JwtAuthenticationConverter()
+        jwtConverter.setJwtGrantedAuthoritiesConverter(RealmRoleConverter())
+        return jwtConverter
+    }
+
+    @Bean
     fun jwtDecoder(properties: OAuth2ResourceServerProperties): JwtDecoder {
         return NimbusJwtDecoder.withJwkSetUri(properties.jwt.jwkSetUri).build()
+    }
+}
+
+class RealmRoleConverter : Converter<Jwt, Collection<GrantedAuthority>> {
+    override fun convert(jwt: Jwt): Collection<GrantedAuthority> {
+        val realmAccess = jwt.claims["realm_access"] as? Map<String, Any> ?: return emptyList()
+        val roles = realmAccess["roles"] as? List<String> ?: return emptyList()
+        return roles.map { role -> SimpleGrantedAuthority("ROLE_$role") }
     }
 }
 
