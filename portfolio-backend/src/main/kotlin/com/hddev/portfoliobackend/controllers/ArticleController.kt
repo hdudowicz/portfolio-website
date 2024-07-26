@@ -10,6 +10,9 @@ import jakarta.annotation.security.RolesAllowed
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 
 @RestController
 @RequestMapping("/articles")
@@ -38,13 +41,32 @@ class ArticleController(
     @PostMapping
     @RolesAllowed("ROLE_ADMIN")
     fun createArticle(
-        @RequestBody articleRequest: ArticleRequest,
-    ): ResponseEntity<ArticleEntity> {
+        @RequestBody articleRequest: ArticleDTO,
+    ): ResponseEntity<Any> {
         if (!authenticationService.isAdmin()) {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
         }
-        val createdArticle = articleService.createArticle(articleRequest)
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdArticle)
+
+        try {
+            // Parse the date string to LocalDateTime
+            val formatter = DateTimeFormatter.ISO_DATE_TIME
+            val publicationDate = LocalDateTime.parse(articleRequest.publicationDate, formatter)
+
+            // Create ArticleCreateDto with parsed date
+            val articleCreateDto = ArticleDTO(
+                title = articleRequest.title,
+                content = articleRequest.content,
+                userId = articleRequest.userId,
+                publicationDate = publicationDate.toString()
+            )
+
+            val createdArticle = articleService.createArticle(articleCreateDto)
+            return ResponseEntity.status(HttpStatus.CREATED).body(createdArticle)
+        } catch (e: DateTimeParseException) {
+            return ResponseEntity.badRequest().body("Invalid date format, use ISO 8601 format.")
+        } catch (e: Exception) {
+            return ResponseEntity.badRequest().body("Error creating article: ${e.message}")
+        }
     }
 
     @PutMapping("/{articleId}")

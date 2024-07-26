@@ -18,7 +18,7 @@ import {QuillEditorComponent} from "ngx-quill";
 })
 export class CreateArticleComponent implements OnInit {
   articleForm: FormGroup;
-  userId?: string = "";
+  userId?: string;
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +38,8 @@ export class CreateArticleComponent implements OnInit {
   async getUserId() {
     try {
       const userProfile = await this.keycloakService.loadUserProfile();
-      this.userId = userProfile.id;
+      // TODO: Improve this
+      this.userId = userProfile.id!!;
     } catch (error) {
       console.error('Error loading user profile:', error);
     }

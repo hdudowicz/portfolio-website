@@ -9,7 +9,7 @@ data class ProjectDTO(
     val technologies: String,
 //    val screenshots: List<Long>,
     val sourceCodeLink: String?,
-    val userId: Long,
+    val userId: String,
     //TODO: Add articles to projects?
 )
 

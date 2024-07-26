@@ -33,7 +33,8 @@ class WebSecurityConfiguration(private val jwtAuthConverter: JwtAuthConverter) {
             .authorizeHttpRequests { authorizeRequests ->
                 authorizeRequests
                     .requestMatchers("/projects").permitAll()
-                    .requestMatchers("/articles").hasRole("ADMIN")
+                    .requestMatchers("/articles").hasRole("admin")
+                    .requestMatchers("/articles").hasAuthority("SCOPE_create-article")
                     .anyRequest().authenticated()
             }
             .oauth2ResourceServer { oauth2ResourceServer ->
@@ -63,9 +64,19 @@ class WebSecurityConfiguration(private val jwtAuthConverter: JwtAuthConverter) {
 
 class RealmRoleConverter : Converter<Jwt, Collection<GrantedAuthority>> {
     override fun convert(jwt: Jwt): Collection<GrantedAuthority> {
-        val realmAccess = jwt.claims["realm_access"] as? Map<String, Any> ?: return emptyList()
-        val roles = realmAccess["roles"] as? List<String> ?: return emptyList()
-        return roles.map { role -> SimpleGrantedAuthority("ROLE_$role") }
+        val authorities = mutableListOf<GrantedAuthority>()
+
+        // Convert roles
+        val realmAccess = jwt.claims["realm_access"] as? Map<String, Any>
+        val roles = realmAccess?.get("roles") as? List<String> ?: emptyList()
+        authorities.addAll(roles.map { role -> SimpleGrantedAuthority("ROLE_$role") })
+
+        // Convert scopes
+        val scope = jwt.claims["scope"] as? String
+        val scopes = scope?.split(" ") ?: emptyList()
+        authorities.addAll(scopes.map { SimpleGrantedAuthority("SCOPE_$it") })
+
+        return authorities
     }
 }
 

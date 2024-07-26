@@ -14,8 +14,8 @@ import jakarta.persistence.*
 @Table(name = "user")
 data class UserEntity(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    @GeneratedValue(strategy = GenerationType.UUID)
+    val id: String = "",
     @Column(unique = true, nullable = false)
     var username: String,
     @Column(unique = true, nullable = false)

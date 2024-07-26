@@ -1,11 +1,15 @@
 package com.hddev.portfoliobackend.service
 
 import com.hddev.portfoliobackend.entities.ArticleEntity
+import com.hddev.portfoliobackend.model.ArticleDTO
 import com.hddev.portfoliobackend.model.ArticleRequest
 import com.hddev.portfoliobackend.repository.ArticleRepository
 import com.hddev.portfoliobackend.repository.UserRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Service
 class ArticleService(private val articleRepository: ArticleRepository, private val userRepository: UserRepository) {
@@ -17,12 +21,15 @@ class ArticleService(private val articleRepository: ArticleRepository, private v
         return articleRepository.findByIdOrNull(articleId)
     }
 
-    fun createArticle(articleRequest: ArticleRequest): ArticleEntity {
+    fun createArticle(articleRequest: ArticleDTO): ArticleEntity {
+        val formatter = DateTimeFormatter.ISO_DATE_TIME
+        val publicationDate = LocalDate.parse(articleRequest.publicationDate, formatter)
+
         val article =
             ArticleEntity(
                 title = articleRequest.title,
                 content = articleRequest.content,
-                publicationDate = articleRequest.publicationDate.toLocalDate(),
+                publicationDate = publicationDate,
                 user = userRepository.findByIdOrNull(articleRequest.userId)
                     ?: throw NoSuchElementException("User not found"),
             )
