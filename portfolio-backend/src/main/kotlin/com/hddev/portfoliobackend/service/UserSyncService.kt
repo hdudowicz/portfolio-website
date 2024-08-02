@@ -25,7 +25,6 @@ class UserSyncService(
         val defaultPassword = "changeMe"
 
         // Assuming the first role found is the user's role
-        // You might need to adjust this based on your Keycloak role structure
         val role = keycloakUser.realmRoles?.firstOrNull() ?: "USER"
 
         return UserEntity(
