@@ -44,7 +44,8 @@ export class CreateArticleComponent implements OnInit {
       console.error('Error loading user profile:', error);
     }
   }
-
+// TODO: Need to create user for this uuid otherwise uuid would would be not found in backend,
+//   Need to create registration form, from keycloak maybe?
   onSubmit() {
     if (this.articleForm.valid && this.userId) {
       const articleData = {

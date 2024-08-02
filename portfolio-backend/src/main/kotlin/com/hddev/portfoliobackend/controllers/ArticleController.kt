@@ -43,10 +43,6 @@ class ArticleController(
     fun createArticle(
         @RequestBody articleRequest: ArticleDTO,
     ): ResponseEntity<Any> {
-        if (!authenticationService.isAdmin()) {
-            return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
-        }
-
         try {
             // Parse the date string to LocalDateTime
             val formatter = DateTimeFormatter.ISO_DATE_TIME
@@ -59,6 +55,8 @@ class ArticleController(
                 userId = articleRequest.userId,
                 publicationDate = publicationDate.toString()
             )
+
+//            TODO: Check create article component
 
             val createdArticle = articleService.createArticle(articleCreateDto)
             return ResponseEntity.status(HttpStatus.CREATED).body(createdArticle)

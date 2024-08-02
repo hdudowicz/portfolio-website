@@ -34,6 +34,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-security:3.3.0")
     implementation("org.keycloak:keycloak-spring-boot-starter:24.0.5")
     implementation("org.keycloak:keycloak-spring-security-adapter:24.0.5")
+    implementation("org.keycloak:keycloak-admin-client:25.0.2")
+    implementation("org.jboss.resteasy:resteasy-client")
 
     // Hibernate dependencies
     implementation("org.hibernate.orm:hibernate-core:6.5.2.Final")

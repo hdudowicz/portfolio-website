@@ -2,10 +2,12 @@ package com.hddev.portfoliobackend.service
 
 import com.hddev.portfoliobackend.entities.UserEntity
 import com.hddev.portfoliobackend.repository.UserRepository
+import org.keycloak.KeycloakPrincipal
+import org.keycloak.adapters.springsecurity.token.KeycloakAuthenticationToken
 import org.springframework.stereotype.Service
 
 @Service
-class UserService(private val userRepository: UserRepository) {
+class UserService(private val userRepository: UserRepository,) {
     fun getAllUsers(): List<UserEntity> = userRepository.findAll()
 
     fun getUserById(id: String): UserEntity? = userRepository.findById(id).orElse(null)
