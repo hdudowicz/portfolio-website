@@ -5,6 +5,8 @@ import {ImportsModule} from "../../imports.module";
 import {ArticleService} from "../../core/http/article.service";
 import {catchError, throwError} from "rxjs";
 import {QuillEditorComponent} from "ngx-quill";
+import { HdMessageService } from '../shared/services/hd-message.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-article',
@@ -23,7 +25,8 @@ export class CreateArticleComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private articleService: ArticleService,
-    private keycloakService: KeycloakService
+    private keycloakService: KeycloakService,
+    private messageService: HdMessageService,
   ) {
     this.articleForm = this.fb.group({
       title: ['', Validators.required],
@@ -31,11 +34,11 @@ export class CreateArticleComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getUserId();
   }
 
-  async getUserId() {
+  async getUserId(): void {
     try {
       const userProfile = await this.keycloakService.loadUserProfile();
       // TODO: Improve this
@@ -46,7 +49,7 @@ export class CreateArticleComponent implements OnInit {
   }
 // TODO: Need to create user for this uuid otherwise uuid would would be not found in backend,
 //   Need to create registration form, from keycloak maybe?
-  onSubmit() {
+  onSubmit(): void {
     if (this.articleForm.valid && this.userId) {
       const articleData = {
         ...this.articleForm.value,
@@ -54,21 +57,16 @@ export class CreateArticleComponent implements OnInit {
         userId: this.userId
       };
       this.articleService.createArticle(articleData).pipe(
-        catchError(err => {
+        catchError((err: HttpErrorResponse) => {
           console.error('Error creating article:', err);
           // TODO: Handle error
-
+          this.messageService.submitError(err.message);
           return throwError(() => err);
         })
-      ).subscribe({
-        next: (response) => {
-          console.log('Article created successfully:', response);
-          this.articleForm.reset();
-        },
-        error: (error) => {
-          console.error('Error in subscribe:', error);
-          // TODO: Handle error
-        }
+      ).subscribe((response) => {
+        console.log('Article created successfully:', response);
+        this.messageService.submitSuccess('Article Created', 'Article Created Successfully');
+        this.articleForm.reset();
       });
     } else {
       console.error('Form is invalid or userId is not available');
