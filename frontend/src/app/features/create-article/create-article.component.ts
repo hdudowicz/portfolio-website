@@ -38,7 +38,7 @@ export class CreateArticleComponent implements OnInit {
     this.getUserId();
   }
 
-  async getUserId(): void {
+  async getUserId(): Promise<any> {
     try {
       const userProfile = await this.keycloakService.loadUserProfile();
       // TODO: Improve this
