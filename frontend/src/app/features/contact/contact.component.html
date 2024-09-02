@@ -1,18 +1,18 @@
-<div class="w-100">
+<div class="w-100 text-white m-2">
     <h2>Contact Me</h2>
-    
+
     <p-messages></p-messages>
 
-    <form #contactForm id="contact-form">
+    <form id="contact-form" class="my-6" (submit)="submit()">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name">
-      
+      <input type="text" id="name" name="name" class="text-black">
+
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email">
-      
+      <input type="email" id="email" name="email" class="text-black">
+
       <label for="message">Message:</label>
-      <textarea id="message" name="message"></textarea>
-      
+      <textarea id="message" name="message" class="text-black"></textarea>
+
       <button type="submit">Send</button>
     </form>
   </div>

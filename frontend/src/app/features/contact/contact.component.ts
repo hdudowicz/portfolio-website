@@ -1,9 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { ContactService } from 'src/app/core/http/contact.service';
-import { catchError } from 'rxjs/operators'
-import { of } from 'rxjs';
+import {catchError, switchMap} from 'rxjs/operators'
+import {EMPTY, map, of} from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HdMessageService } from '../shared/services/hd-message.service';
 import { ContactDataDTO } from 'src/app/core/models/contact-data-dto';
@@ -15,12 +15,12 @@ import { ContactDataDTO } from 'src/app/core/models/contact-data-dto';
 })
 export class ContactComponent {
   @Input("contactForm")
-  formElement?: HTMLFormElement; 
+  formElement?: HTMLFormElement;
 
   contactForm: FormGroup;
 
   constructor(
-    private contactService: ContactService, 
+    private contactService: ContactService,
     private fb: FormBuilder,
     private messageService: HdMessageService
     ){
@@ -31,17 +31,17 @@ export class ContactComponent {
     });
   }
 
-  submit(event: ContactDataDTO): void {
-    this.contactService.submitContact(event)
+  submit(): void {
+    this.contactService.submitContact(this.contactForm.value as ContactDataDTO)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           this.messageService.submitError(error.message);
-          return of();
+          return EMPTY;
         })
       ).subscribe(response => {
         console.log('Message submitted successfully:', response);
         this.messageService.submitSuccess(
-          'Submission Success', 
+          'Submission Success',
           'Message submitted successfully.'
         );
         this.contactForm.reset();
