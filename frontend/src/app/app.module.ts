@@ -20,7 +20,7 @@ import { AnimatedBackgroundComponent } from "./features/shared/components/animat
 import { ScrambleTextEffectComponent } from './features/shared/components/scramble-text-effect/scramble-text-effect.component';
 import { ProjectsModule } from './features/projects/projects.module';
 import { TerminalTextEffectComponent } from './features/shared/components/terminal-text-effect/terminal-text-effect.component';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import { initializeKeycloak } from './core/auth/keycloak-init';
 import { KeycloakService } from 'keycloak-angular';
 import {EditorModule} from "primeng/editor";
@@ -28,6 +28,7 @@ import {AdminAuthGuard} from "./features/shared/guards/auth.guard";
 import {AccessDeniedComponent} from "./features/shared/components/access-denied/access-denied.component";
 import {LoginButtonComponent} from "./features/shared/components/login-button/login-button.component";
 import { QuillModule } from 'ngx-quill'
+import {AuthInterceptor} from "./core/interceptors/auth.interceptor";
 
 @NgModule({
     declarations: [
@@ -49,6 +50,11 @@ import { QuillModule } from 'ngx-quill'
             useFactory: initializeKeycloak,
             multi: true,
             deps: [KeycloakService]
+        },
+        {
+          provide: HTTP_INTERCEPTORS,
+          useClass: AuthInterceptor,
+          multi: true
         },
         AdminAuthGuard
     ],

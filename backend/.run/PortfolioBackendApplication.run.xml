@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="PortfolioBackendApplicationKt" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+  <configuration default="false" name="PortfolioBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <additionalParameters>
       <param>
         <option name="enabled" value="true" />
@@ -29,8 +29,8 @@
     </additionalParameters>
     <option name="ALTERNATIVE_JRE_PATH" value="corretto-17" />
     <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-    <module name="portfolio-backend.main" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="com.hddev.portfoliobackend.PortfolioBackendApplicationKt" />
+    <module name="backend.main" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="com.hddev.portfoliobackend.PortfolioBackendApplication" />
     <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
       <option name="credential" />
       <option name="region" />

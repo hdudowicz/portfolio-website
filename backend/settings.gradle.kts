@@ -1,4 +1,4 @@
-rootProject.name = "portfolio-backend"
+rootProject.name = "backend"
 
 pluginManagement {
     repositories {

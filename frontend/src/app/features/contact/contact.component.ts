@@ -31,7 +31,7 @@ export class ContactComponent {
     });
   }
 
-  submit(): void {
+  onSubmit(): void {
     this.contactService.submitContact(this.contactForm.value as ContactDataDTO)
       .pipe(
         catchError((error: HttpErrorResponse) => {

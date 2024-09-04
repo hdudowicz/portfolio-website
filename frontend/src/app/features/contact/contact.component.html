@@ -1,18 +1,18 @@
-<div class="w-100 text-white m-2">
+<div class="w-6/12 text-white m-2">
     <h2>Contact Me</h2>
 
-    <p-messages></p-messages>
+    <p-messages [enableService]="true"></p-messages>
 
-    <form id="contact-form" class="my-6" (submit)="submit()">
+    <form id="contact-form" class="my-6 flex flex-wrap" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" class="text-black">
+      <input pInputText type="text" id="name" formControlName="name" class="text-black">
 
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email" class="text-black">
+      <input pInputText type="email" id="email" formControlName="email" class="text-black">
 
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" class="text-black"></textarea>
+      <label for="message" class="">Message:</label>
+      <textarea id="message" pInputTextarea name="message" class="text-black"></textarea>
 
-      <button type="submit">Send</button>
+      <p-button type="submit" [raised]="true" class="p-button-rounded p-button-success px-2 mt-2 mx-auto">Send</p-button>
     </form>
   </div>
